@@ -1,0 +1,135 @@
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-top: 80px;
+}
+
+.hero-content {
+  max-width: 800px;
+  width: 100%;
+}
+
+.terminal-window {
+  background-color: var(--bg-secondary);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  width: 100%;
+}
+
+.terminal-header {
+  background-color: #2d333b;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-right: 1rem;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-button.red {
+  background-color: var(--danger);
+}
+
+.terminal-button.yellow {
+  background-color: var(--warning);
+}
+
+.terminal-button.green {
+  background-color: var(--success);
+}
+
+.terminal-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.terminal-body {
+  padding: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.line {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.prompt {
+  color: var(--success);
+}
+
+.response {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.name {
+  color: var(--accent-primary);
+  font-weight: bold;
+}
+
+.skill {
+  display: inline-block;
+  background-color: rgba(88, 166, 255, 0.1);
+  color: var(--accent-primary);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.cursor-blink {
+  display: inline-block;
+  width: 8px;
+  height: 1rem;
+  background-color: var(--text-primary);
+  animation: blink 1s step-end infinite;
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 2rem;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-15px);
+  }
+  60% {
+    transform: translateY(-7px);
+  }
+}
+
+@media (max-width: 768px) {
+  .terminal-body {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .skill {
+    font-size: 0.8rem;
+  }
+}

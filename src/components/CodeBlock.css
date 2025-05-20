@@ -1,0 +1,75 @@
+.code-block-container {
+  background-color: #1e1e1e;
+  border-radius: 6px;
+  overflow: auto;
+  margin-bottom: 1rem;
+}
+
+.code-language {
+  background-color: #2d333b;
+  padding: 0.5rem 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+pre {
+  padding: 1rem;
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #e6edf3;
+  overflow-x: auto;
+}
+
+code {
+  white-space: pre;
+}
+
+/* Basic syntax highlighting */
+.language-bash .comment,
+.language-javascript .comment {
+  color: #6a9955;
+}
+
+.language-bash .string,
+.language-javascript .string {
+  color: #ce9178;
+}
+
+.language-bash .keyword,
+.language-javascript .keyword {
+  color: #569cd6;
+}
+
+.language-bash .function,
+.language-javascript .function {
+  color: #dcdcaa;
+}
+
+.language-bash {
+  color: #e6edf3;
+}
+
+/* Command highlighting */
+.language-bash .command {
+  color: #7ee787;
+}
+
+/* Output highlighting */
+.language-bash .output {
+  color: #a5d6ff;
+}
+
+/* Comment highlighting */
+.language-bash .comment {
+  color: #8b949e;
+}
+
+.code-block-wrapper {
+  background-color: #1e1e1e;
+  border-radius: 6px;
+  overflow: auto;
+  margin: 1rem 0;
+}
