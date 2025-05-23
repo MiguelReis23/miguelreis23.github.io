@@ -30,7 +30,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/skills" element={<UnderConstructionWrapper component={About} />} />
+            <Route path="/skills" element={<UnderConstructionWrapper component={Skills} />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/htb" element={<UnderConstructionWrapper component={HackTheBox} />} />
             <Route path="/contact" element={<Contact/>} />

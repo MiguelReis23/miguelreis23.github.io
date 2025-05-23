@@ -56,7 +56,7 @@ const About = () => {
           <div className="about-text">
             <h2>Who I Am</h2>
             <p>
-              I am a motivated Computer and Informatics Engineering student with a keen interest intechnology and cybersecurity, eager to apply my classroom knowledge to real-worldapplications. I see myself as a collaborative person with a strong willingness to learn andcontribute. I am prepared to offer fresh perspectives and a strong work ethic to any team.
+              I am a motivated Computer and Informatics Engineering student with a keen interest in technology and cybersecurity, eager to apply my classroom knowledge to real-world applications. I see myself as a collaborative person with a strong willingness to learn and contribute. I am prepared to offer fresh perspectives and a strong work ethic to any team.
             </p>
             <p>
               Currently pursuing my degree, I'm actively enhancing my skills through hands-on practice in environments like Hack The Box and working towards the Certified Penetration Testing Specialist (CPTS) certification.
