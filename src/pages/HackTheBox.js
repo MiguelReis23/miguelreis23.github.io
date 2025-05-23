@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaTrophy, FaServer, FaTerminal, FaNetworkWired, FaLock, FaFire } from 'react-icons/fa';
-import CodeBlock from './CodeBlock';
+import CodeBlock from '../components/CodeBlock';
 import './HackTheBox.css';
 
 const HackTheBox = () => {

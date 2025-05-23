@@ -42,38 +42,32 @@ const Header = () => {
           <ul className="nav-list">
             <li><Link to="/" onClick={() => setMobileMenuOpen(false)}>Home</Link></li>
             <li>
-              <Link to="/about" onClick={() => setMobileMenuOpen(false)}>
-                About <FaToolbox className="construction-icon" title="Under Construction" />
-              </Link>
+              <Link to="/about" onClick={() => setMobileMenuOpen(false)}>About</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/skills" onClick={() => setMobileMenuOpen(false)}>
                 Skills <FaToolbox className="construction-icon" title="Under Construction" />
               </Link>
-            </li>
+            </li> */}
             <li>
-              <Link to="/projects" onClick={() => setMobileMenuOpen(false)}>
-                Projects <FaToolbox className="construction-icon" title="Under Construction" />
-              </Link>
+              <Link to="/projects" onClick={() => setMobileMenuOpen(false)}> Projects</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/htb" onClick={() => setMobileMenuOpen(false)}>
                 HTB <FaToolbox className="construction-icon" title="Under Construction" />
               </Link>
-            </li>
+            </li> */}
             <li>
-              <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
-                Contact <FaToolbox className="construction-icon" title="Under Construction" />
-              </Link>
+              <Link to="/contact" onClick={() => setMobileMenuOpen(false)}> Contact</Link>
             </li>
           </ul>
         </nav>
         
         <div className="social-links">
-          <a href="https://github.com/miguelreis" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/miguelreis23" target="_blank" rel="noopener noreferrer">
             <FaGithub />
           </a>
-          <a href="https://linkedin.com/in/miguelreis" target="_blank" rel="noopener noreferrer">
+          <a href="https://linkedin.com/in/miguel-rosa-reis" target="_blank" rel="noopener noreferrer">
             <FaLinkedin />
           </a>
           {/* <a href="https://app.hackthebox.com/profile/miguelreis" target="_blank" rel="noopener noreferrer">

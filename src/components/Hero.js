@@ -29,16 +29,16 @@ const Hero = () => {
               Computer & Informatics Engineering Student<br />
             </div>
             
-            <div className="line">
+            {/* <div className="line">
               <span className="prompt">$</span> ./skills --list
             </div>
             <div className="response">
               <span className="skill">Python</span>
               <span className="skill">Java</span>
               <span className="skill">SQL</span>
-              <span className="skill">Fontend Development</span>
-              <span className="skill">Team Work</span>
-            </div>
+              <span className="skill">Frontend Development</span>
+              <span className="skill">Teamwork</span>
+            </div> */}
             
             <div className="line">
               <span className="prompt">$</span> echo $INTERESTS
@@ -54,9 +54,9 @@ const Hero = () => {
         </div>
       </div>
       
-      <a href="#explore" className="scroll-down">
+      {/* <a href="#" className="scroll-down">
         <FaChevronDown />
-      </a>
+      </a> */}
     </section>
   );
 };

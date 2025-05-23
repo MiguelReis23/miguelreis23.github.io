@@ -12,24 +12,24 @@ const Home = () => {
       description: "Learn about my background, education, and journey.",
       link: "/about"
     },
-    {
-      id: "skills",
-      title: "Skills & Expertise",
-      description: "Explore my technical skills, certifications, and areas of expertise.",
-      link: "/skills"
-    },
+    // {
+    //   id: "skills",
+    //   title: "Skills & Expertise",
+    //   description: "Explore my technical skills, certifications, and areas of expertise.",
+    //   link: "/skills"
+    // },
     {
       id: "projects",
       title: "Projects",
       description: "View my portfolio of projects.",
       link: "/projects"
     },
-    {
-      id: "htb",
-      title: "HackTheBox Journey",
-      description: "Follow my progress through HackTheBox challenges and CPTS certification.",
-      link: "/htb"
-    },
+    // {
+    //   id: "htb",
+    //   title: "HackTheBox Journey",
+    //   description: "Follow my progress through HackTheBox challenges and CPTS certification.",
+    //   link: "/htb"
+    // },
     {
       id: "contact",
       title: "Get In Touch",
@@ -41,12 +41,6 @@ const Home = () => {
   return (
     <div>
       <Hero />
-      
-      <div className="construction-notice">
-        <FaInfoCircle />
-        <p>Welcome to my personal website! Only the homepage is currently available. Other sections are coming soon!</p>
-      </div>
-      
       <div id="explore" className="section-previews">
         <div className="container">
           <h2 className="previews-title">Explore My Portfolio</h2>

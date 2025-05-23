@@ -2,11 +2,11 @@ import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import HackTheBox from './components/HackTheBox';
-import Contact from './components/Contact';
+import About from './pages/About';
+import Skills from './pages/Skills';
+import Projects from './pages/Projects';
+import HackTheBox from './pages/HackTheBox';
+import Contact from './pages/Contact';
 import UnderConstruction from './components/UnderConstruction';
 import Footer from './components/Footer';
 import './App.css';
@@ -29,11 +29,11 @@ function App() {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<UnderConstructionWrapper component={About} />} />
-            <Route path="/skills" element={<UnderConstructionWrapper component={Skills} />} />
-            <Route path="/projects" element={<UnderConstructionWrapper component={Projects} />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/skills" element={<UnderConstructionWrapper component={About} />} />
+            <Route path="/projects" element={<Projects />} />
             <Route path="/htb" element={<UnderConstructionWrapper component={HackTheBox} />} />
-            <Route path="/contact" element={<UnderConstructionWrapper component={Contact} />} />
+            <Route path="/contact" element={<Contact/>} />
           </Routes>
         </main>
         <Footer />

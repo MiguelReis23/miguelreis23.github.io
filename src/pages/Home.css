@@ -1,5 +1,5 @@
 .section-previews {
-  padding: 4rem 0;
+  padding: 2rem 0 4rem; /* Reduced top padding from 4rem to 2rem */
   background-color: var(--bg-primary);
 }
 

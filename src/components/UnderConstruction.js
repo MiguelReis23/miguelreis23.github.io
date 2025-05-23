@@ -8,7 +8,7 @@ const UnderConstruction = () => {
       <div className="under-construction-container">
         <div className="under-construction-icon">🚧</div>
         <h2>Under Construction</h2>
-        <p>This section is coming soon. We're working hard to bring you great content!</p>
+        <p>This section is coming soon!</p>
         <Link to="/" className="back-button">Back to Home</Link>
       </div>
     </div>

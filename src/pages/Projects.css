@@ -53,6 +53,41 @@
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Minimal gold styling for the main project */
+.project-card.main-project {
+  order: -1; /* Makes the main project appear first */
+  border: 1px solid rgba(230, 168, 23, 0.4); /* Subtle gold outline */
+  box-shadow: 0 4px 6px rgba(230, 168, 23, 0.15);
+}
+
+/* Gold styling for the icon */
+.project-card.main-project .project-icon {
+  color: #E6A817;
+  background: rgba(230, 168, 23, 0.1);
+}
+
+/* Gold styling for the title */
+.project-card.main-project h3 {
+  color: #E6A817;
+  font-weight: 600;
+}
+
+/* Gold styling for the category tags */
+.project-card.main-project .project-tag {
+  background: rgba(230, 168, 23, 0.1);
+  color: #E6A817;
+  border: 1px solid rgba(230, 168, 23, 0.3);
+}
+
+/* Gold styling for GitHub links */
+.project-card.main-project .project-link {
+  color: #E6A817;
+}
+
+.project-card.main-project .project-link:hover {
+  color: #F9D27D;
+}
+
 .project-icon {
   font-size: 2rem;
   color: var(--accent-primary);
