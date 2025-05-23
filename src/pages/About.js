@@ -7,14 +7,14 @@ const About = () => {
   
   const education = [
     {
-      degree: "High School Diploma in Science and Technology",
-      institution: "Centro de Estudos de Fátima",
-      period: "2018 - 2021",
-    },
-    {
       degree: "Bachelor in Computer and Informatics Engineering",
       institution: "Aveiro's University",
       period: "2021 - Present",
+    },
+    {
+      degree: "High School Diploma in Science and Technology",
+      institution: "Centro de Estudos de Fátima",
+      period: "2018 - 2021",
     }
   ];
 
@@ -86,23 +86,6 @@ const About = () => {
 
         <div className="timeline-section">
           <div className="timeline-column">
-            <h2><FaGraduationCap /> Education</h2>
-            <div className="timeline">
-              {education.map((item, index) => (
-                <div key={index} className="timeline-item">
-                  <div className="timeline-marker"></div>
-                  <div className="timeline-content">
-                    <div className="timeline-date">{item.period}</div>
-                    <h3>{item.degree}</h3>
-                    <h4>{item.institution}</h4>
-                    <p>{item.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="timeline-column">
             <h2><FaBriefcase /> Experience</h2>
             <div className="timeline">
               {experience.map((item, index) => (
@@ -135,6 +118,23 @@ const About = () => {
                         )}
                       </>
                     )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="timeline-column">
+            <h2><FaGraduationCap /> Education</h2>
+            <div className="timeline">
+              {education.map((item, index) => (
+                <div key={index} className="timeline-item">
+                  <div className="timeline-marker"></div>
+                  <div className="timeline-content">
+                    <div className="timeline-date">{item.period}</div>
+                    <h3>{item.degree}</h3>
+                    <h4>{item.institution}</h4>
+                    <p>{item.description}</p>
                   </div>
                 </div>
               ))}
