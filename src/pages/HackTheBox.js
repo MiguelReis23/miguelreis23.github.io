@@ -1,23 +1,71 @@
-import React from 'react';
-import { FaTrophy, FaServer, FaTerminal, FaNetworkWired, FaLock, FaFire } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaTrophy, FaServer, FaTerminal, FaNetworkWired, FaLock, FaFire, FaChevronDown } from 'react-icons/fa';
 import CodeBlock from '../components/CodeBlock';
 import './HackTheBox.css';
 
 const HackTheBox = () => {
-  // CPTS modules and progress
-  const cptsModules = [
-    { name: "Introduction", progress: 100, icon: <FaTerminal /> },
-    { name: "Information Gathering", progress: 85, icon: <FaNetworkWired /> },
-    { name: "Vulnerability Assessment", progress: 75, icon: <FaLock /> },
-    { name: "Web Attacks", progress: 80, icon: <FaServer /> },
-    { name: "Attack Infrastructure", progress: 65, icon: <FaNetworkWired /> },
-    { name: "File Transfers", progress: 70, icon: <FaTerminal /> },
-    { name: "Antivirus Evasion", progress: 60, icon: <FaLock /> },
-    { name: "Privilege Escalation", progress: 70, icon: <FaServer /> },
-    { name: "Post-Exploitation", progress: 55, icon: <FaTerminal /> },
-  ];
+  // State for collapsible modules
+  const [isModulesExpanded, setIsModulesExpanded] = useState(false);
+  const [animationState, setAnimationState] = useState('');
   
-  const totalProgress = cptsModules.reduce((acc, module) => acc + module.progress, 0) / cptsModules.length;
+  // Handle toggle with animation
+  const toggleModules = () => {
+    if (isModulesExpanded) {
+      // Start collapsing
+      setAnimationState('collapsing');
+      setTimeout(() => {
+        setIsModulesExpanded(false);
+        setAnimationState('');
+      }, 300); // Match animation duration
+    } else {
+      // Start expanding
+      setIsModulesExpanded(true);
+      setAnimationState('expanding');
+      setTimeout(() => {
+        setAnimationState('');
+      }, 300); // Match animation duration
+    }
+  };
+  
+  // Get HTB Academy modules data from JSON
+  const htbModulesData = require('../data/htb-academy-modules.json');
+  
+  // Calculate derived data automatically
+  const processedModules = htbModulesData.modules.map(module => ({
+    ...module,
+    percentage: module.total > 0 ? Math.round((module.completed / module.total) * 100) : 0,
+    status: module.completed === module.total ? 'completed' : 
+            module.completed > 0 ? 'in_progress' : 'not_started'
+  }));
+  
+  // Calculate summary statistics
+  const totalModules = processedModules.length;
+  const completedModules = processedModules.filter(m => m.status === 'completed').length;
+  const inProgressModules = processedModules.filter(m => m.status === 'in_progress').length;
+  const notStartedModules = processedModules.filter(m => m.status === 'not_started').length;
+  const totalSections = processedModules.reduce((sum, m) => sum + m.total, 0);
+  const completedSections = processedModules.reduce((sum, m) => sum + m.completed, 0);
+  const overallProgress = totalSections > 0 ? (completedSections / totalSections) * 100 : 0;
+  
+  const summary = {
+    totalModules,
+    completedModules,
+    inProgressModules,
+    notStartedModules,
+    totalSections,
+    completedSections,
+    overallProgress
+  };
+  
+  // Transform modules data for display
+  const cptsModules = processedModules.map(module => ({
+    name: module.title,
+    progress: module.percentage,
+    status: module.status,
+    difficulty: module.difficulty
+  }));
+  
+  const totalProgress = summary.overallProgress;
   
   // Completed machines
   const boxesCompleted = [
@@ -30,6 +78,23 @@ const HackTheBox = () => {
     { name: "Bastard", difficulty: "Medium", points: 20, date: "August 2022" },
     { name: "Nineveh", difficulty: "Medium", points: 20, date: "September 2022" }
   ];
+
+  // Starting Point Machines
+  const startingPointMachines = [
+    { name: "Meow", difficulty: "Very Easy", date: "June 2024", tier: 0, tags: ["Telnet", "Protocols", "Reconnaissance", "Weak Credentials", "Misconfiguration"] },
+    { name: "Fawn", difficulty: "Very Easy", date: "June 2024", tier: 0, tags: ["FTP", "Protocols", "Reconnaissance", "Anonymous/Guest Access"]},
+    {name: "Dancing", difficulty: "Very Easy", date: "June 2024", tier: 0, tags: ["Protocols", "SMB", "Reconnaissance", "Anonymous/Guest Access"]},
+    {name: "Redeemer", difficulty: "Very Easy", date: "June 2024", tier: 0, tags: ["Redis", "Vulnerability Assessment", "Databases", "Reconnaissance", "Anonymous/Guest Access"]},
+    {name: "Appointment", difficulty: "Very Easy", date: "June 2024", tier: 1, tags: ["Databases", "Apache", "MariaDB", "PHP", "SQL", "Reconnaissance", "SQL Injection"]},
+    {name: "Sequel", difficulty: "Very Easy", date: "June 2024", tier: 1, tags: ["Vulnerability Assessment", "Databases", "MySQL", "SQL", "Reconnaissance", "Weak Credentials"] },
+    {name: "Crocodile", difficulty: "Very Easy", date: "June 2024", tier: 1, tags: ["Custom Applications", "Protocols", "Apache", "FTP", "Reconnaissance", "Web Site Structure Discovery", "Clear Text Credentials", "Anonymous/Guest Access"]},
+    {name: "Responder", difficulty: "Very Easy", date: "June 2024", tier: 1, tags: ["WinRM", "Custom Applications", "Protocols", "XAMPP", "SMB", "Responder", "PHP", "Reconnaissance", "Password Cracking", "Hash Capture", "Remote File Inclusion", "Remote Code Execution"]},
+    {name: "Three", difficulty: "Very Easy", date: "July 2024", tier: 1, tags: ["Cloud", "Custom Applications", "AWS", "Reconnaissance", "Web Site Structure Discovery", "Bucket Enumeration", "Arbitrary File Upload", "Anonymous/Guest Access"]},
+    {name: "Archetype", difficulty: "Very Easy", date: "July 2024", tier: 2, tags: ["Protocols", "MSSQL", "SMB", "Powershell", "Reconnaissance", "Remote Code Execution", "Clear Text Credentials", "Information Disclosure", "Anonymous/Guest Access"]},
+    {name: "Oopsie", difficulty: "Very Easy", date: "July 2024", tier: 2, tags: ["PHP", "Custom Applications", "Apache", "Reconnaissance", "Web Site Structure Discovery", "Cookie Manipulation", "SUID Exploitation", "Authentication Bypass", "Clear Text Credentials", "Arbitrary File Upload", "Insecure Direct Object Reference (IDOR)", "Path Hijacking"]},
+    {name: "Vaccine", difficulty: "Very Easy", date: "July 2024", tier: 2, tags: ["Vulnerability Assessment", "Databases", "Custom Applications", "Protocols", "Source Code Analysis", "Apache", "PostgreSQL", "FTP", "PHP", "Reconnaissance", "Password Cracking", "SUDO Exploitation", "SQL Injection", "Remote Code Execution", "Clear Text Credentials", "Anonymous/Guest Access"]},
+    {name: "Unified", difficulty: "Very Easy", date: "July 2024", tier: 2, tags: ["Vulnerability Assessment", "Databases", "Custom Applications", "MongoDB", "Java", "Reconnaissance", "Clear Text Credentials", "Default Credentials", "Code Injection"]},
+  ]
   
   // Code snippet examples
   const penTestNmapCode = `# Initial Network Reconnaissance
@@ -101,77 +166,79 @@ Table: users
         </div>
 
         <div className="htb-intro">
-          <div className="htb-header">
-            <div className="htb-logo">
-              <FaFire className="htb-icon" />
-            </div>
-            <div className="htb-stats">
-              <div className="htb-stat-item">
-                <span className="htb-stat-number">{boxesCompleted.length}</span>
-                <span className="htb-stat-label">Machines<br />Pwned</span>
-              </div>
-              <div className="htb-stat-item">
-                <span className="htb-stat-number">
-                  {boxesCompleted.reduce((acc, box) => acc + box.points, 0)}
-                </span>
-                <span className="htb-stat-label">Points<br />Earned</span>
-              </div>
-              <div className="htb-stat-item">
-                <span className="htb-stat-number">{Math.round(totalProgress)}%</span>
-                <span className="htb-stat-label">CPTS<br />Progress</span>
-              </div>
-            </div>
-          </div>
-
           <div className="htb-description">
             <p>
               I'm currently pursuing the <strong>Hack The Box Certified Penetration Testing Specialist (CPTS)</strong> certification to enhance my practical skills in cybersecurity. This challenging certification covers various aspects of penetration testing, from initial reconnaissance to post-exploitation.
             </p>
             <p>
-              Through HTB's practical labs and challenges, I'm gaining hands-on experience with real-world scenarios that test my ability to identify vulnerabilities and exploit them ethically. This journey is helping me develop a methodical approach to security testing.
+              Currently working through <strong>{summary.totalModules} HTB Academy modules</strong> with <strong>{summary.completedModules} completed</strong> and <strong>{summary.inProgressModules} in progress</strong>. Through HTB's practical labs and challenges, I'm gaining hands-on experience with real-world scenarios that test my ability to identify vulnerabilities and exploit them ethically.
             </p>
           </div>
         </div>
 
         <div className="cpts-progress-section">
-          <h2>CPTS Certification Progress</h2>
-          
-          <div className="overall-progress">
-            <div className="progress-header">
-              <span>Overall Progress</span>
-              <span className="progress-percentage">{Math.round(totalProgress)}%</span>
-            </div>
-            <div className="progress-bar">
-              <div 
-                className="progress-fill"
-                style={{ width: `${totalProgress}%` }}
-              ></div>
-            </div>
-          </div>
-          
-          <div className="module-list">
-            {cptsModules.map((module, index) => (
-              <div key={index} className="module-item">
-                <div className="module-icon">{module.icon}</div>
-                <div className="module-info">
-                  <div className="module-header">
-                    <span className="module-name">{module.name}</span>
-                    <span className="module-percentage">{module.progress}%</span>
-                  </div>
-                  <div className="module-progress">
-                    <div 
-                      className="module-fill"
-                      style={{ width: `${module.progress}%` }}
-                    ></div>
-                  </div>
+          <div 
+            className="cpts-journey-header" 
+            onClick={toggleModules}
+          >
+            <div className="journey-title-section">
+              <h2>HTB CPTS Progress</h2>
+              <div className="journey-summary">
+                <div className="progress-bar-inline">
+                  <div 
+                    className="progress-fill-inline"
+                    style={{ width: `${totalProgress}%` }}
+                  ></div>
                 </div>
+                <span className="progress-percentage-inline">{Math.round(totalProgress)}%</span>
               </div>
-            ))}
+            </div>
+            <div className="htb-stats">
+              <div className="htb-stat-item">
+                <span className="htb-stat-number">{summary.completedModules}</span>
+                <span className="htb-stat-label">Completed<br />Modules</span>
+              </div>
+              <div className="htb-stat-item">
+                <span className="htb-stat-number">{summary.totalModules}</span>
+                <span className="htb-stat-label">Total<br />Modules</span>
+              </div>
+            </div>
+            <div className={`expand-icon ${isModulesExpanded ? 'expanded' : ''}`}>
+              <FaChevronDown />
+            </div>
           </div>
+          
+          {(isModulesExpanded || animationState === 'collapsing') && (
+            <div className={`modules-content ${animationState}`}>              
+              <div className="module-list">
+                {cptsModules.map((module, index) => (
+                  <div key={index} className={`module-item ${module.status}`}>
+                    <div className="module-info">
+                      <div className="module-header">
+                        <span className="module-name">{module.name}</span>
+                        <div className="module-badges">
+                          <span className={`difficulty-badge ${module.difficulty.toLowerCase()}`}>
+                            {module.difficulty}
+                          </span>
+                          <span className="module-percentage">{module.progress}%</span>
+                        </div>
+                      </div>
+                      <div className="module-progress">
+                        <div 
+                          className="module-fill"
+                          style={{ width: `${module.progress}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="htb-content">
-          <div className="htb-showcase">
+          {/* <div className="htb-showcase">
             <h2>Skills in Action</h2>
             <div className="code-examples">
               <div className="code-block">
@@ -188,7 +255,7 @@ Table: users
                 </CodeBlock>
               </div>
             </div>
-          </div>
+          </div> */}
           
           <div className="completed-boxes">
             <h2>Machines Conquered</h2>

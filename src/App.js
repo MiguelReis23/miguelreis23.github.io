@@ -10,6 +10,7 @@ import Contact from './pages/Contact';
 import UnderConstruction from './components/UnderConstruction';
 import Footer from './components/Footer';
 import './App.css';
+import CyberSecurity from './pages/CyberSecurity';
 
 // Wrapper component to show Under Construction overlay
 const UnderConstructionWrapper = ({ component: Component }) => {
@@ -32,7 +33,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/skills" element={<UnderConstructionWrapper component={Skills} />} />
             <Route path="/projects" element={<Projects />} />
-            <Route path="/htb" element={<UnderConstructionWrapper component={HackTheBox} />} />
+            <Route path="/htb" element={<HackTheBox />} />
+            <Route path="/cybersecurity" element={<CyberSecurity />} />
             <Route path="/contact" element={<Contact/>} />
           </Routes>
         </main>

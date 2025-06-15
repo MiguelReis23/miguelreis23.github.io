@@ -1,0 +1,201 @@
+{
+  "modules": [
+    {
+      "id": 90,
+      "title": "Penetration Testing Process",
+      "difficulty": "Fundamental",
+      "completed": 15,
+      "total": 15
+    },
+    {
+      "id": 77,
+      "title": "Getting Started",
+      "difficulty": "Fundamental",
+      "completed": 23,
+      "total": 23
+    },
+    {
+      "id": 19,
+      "title": "Network Enumeration with Nmap",
+      "difficulty": "Easy",
+      "completed": 12,
+      "total": 12
+    },
+    {
+      "id": 112,
+      "title": "Footprinting",
+      "difficulty": "Medium",
+      "completed": 21,
+      "total": 21
+    },
+    {
+      "id": 144,
+      "title": "Information Gathering - Web Edition",
+      "difficulty": "Easy",
+      "completed": 15,
+      "total": 19
+    },
+    {
+      "id": 108,
+      "title": "Vulnerability Assessment",
+      "difficulty": "Easy",
+      "completed": 0,
+      "total": 17
+    },
+    {
+      "id": 24,
+      "title": "File Transfers",
+      "difficulty": "Medium",
+      "completed": 0,
+      "total": 10
+    },
+    {
+      "id": 115,
+      "title": "Shells & Payloads",
+      "difficulty": "Medium",
+      "completed": 0,
+      "total": 17
+    },
+    {
+      "id": 39,
+      "title": "Using the Metasploit Framework",
+      "difficulty": "Easy",
+      "completed": 0,
+      "total": 15
+    },
+    {
+      "id": 147,
+      "title": "Password Attacks",
+      "difficulty": "Medium",
+      "completed": 0,
+      "total": 26
+    },
+    {
+      "id": 116,
+      "title": "Attacking Common Services",
+      "difficulty": "Medium",
+      "completed": 0,
+      "total": 19
+    },
+    {
+      "id": 158,
+      "title": "Pivoting, Tunneling, and Port Forwarding",
+      "difficulty": "Medium",
+      "completed": 0,
+      "total": 18
+    },
+    {
+      "id": 143,
+      "title": "Active Directory Enumeration & Attacks",
+      "difficulty": "Medium",
+      "completed": 0,
+      "total": 36
+    },
+    {
+      "id": 110,
+      "title": "Using Web Proxies",
+      "difficulty": "Easy",
+      "completed": 0,
+      "total": 15
+    },
+    {
+      "id": 54,
+      "title": "Attacking Web Applications with Ffuf",
+      "difficulty": "Easy",
+      "completed": 0,
+      "total": 13
+    },
+    {
+      "id": 57,
+      "title": "Login Brute Forcing",
+      "difficulty": "Easy",
+      "completed": 0,
+      "total": 13
+    },
+    {
+      "id": 33,
+      "title": "SQL Injection Fundamentals",
+      "difficulty": "Medium",
+      "completed": 3,
+      "total": 17
+    },
+    {
+      "id": 58,
+      "title": "SQLMap Essentials",
+      "difficulty": "Easy",
+      "completed": 0,
+      "total": 11
+    },
+    {
+      "id": 103,
+      "title": "Cross-Site Scripting (XSS)",
+      "difficulty": "Easy",
+      "completed": 0,
+      "total": 10
+    },
+    {
+      "id": 23,
+      "title": "File Inclusion",
+      "difficulty": "Medium",
+      "completed": 0,
+      "total": 11
+    },
+    {
+      "id": 136,
+      "title": "File Upload Attacks",
+      "difficulty": "Medium",
+      "completed": 0,
+      "total": 11
+    },
+    {
+      "id": 109,
+      "title": "Command Injections",
+      "difficulty": "Medium",
+      "completed": 0,
+      "total": 12
+    },
+    {
+      "id": 134,
+      "title": "Web Attacks",
+      "difficulty": "Medium",
+      "completed": 0,
+      "total": 18
+    },
+    {
+      "id": 113,
+      "title": "Attacking Common Applications",
+      "difficulty": "Medium",
+      "completed": 0,
+      "total": 33
+    },
+    {
+      "id": 51,
+      "title": "Linux Privilege Escalation",
+      "difficulty": "Easy",
+      "completed": 0,
+      "total": 28
+    },
+    {
+      "id": 67,
+      "title": "Windows Privilege Escalation",
+      "difficulty": "Medium",
+      "completed": 0,
+      "total": 33
+    },
+    {
+      "id": 162,
+      "title": "Documentation & Reporting",
+      "difficulty": "Easy",
+      "completed": 0,
+      "total": 8
+    },
+    {
+      "id": 163,
+      "title": "Attacking Enterprise Networks",
+      "difficulty": "Medium",
+      "completed": 0,
+      "total": 14
+    }
+  ],
+  "lastUpdated": "2024-01-20"
+}
