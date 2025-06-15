@@ -1,0 +1,356 @@
+{
+  "modules": [
+    {
+      "id": 90,
+      "title": "Penetration Testing Process",
+      "url": "https://academy.hackthebox.com/module/details/90",
+      "progress": {
+        "completed": 15,
+        "total": 15,
+        "percentage": 100
+      },
+      "difficulty": "Fundamental",
+      "status": "completed"
+    },
+    {
+      "id": 77,
+      "title": "Getting Started",
+      "url": "https://academy.hackthebox.com/module/details/77",
+      "progress": {
+        "completed": 23,
+        "total": 23,
+        "percentage": 100
+      },
+      "difficulty": "Fundamental",
+      "status": "completed"
+    },
+    {
+      "id": 19,
+      "title": "Network Enumeration with Nmap",
+      "url": "https://academy.hackthebox.com/module/details/19",
+      "progress": {
+        "completed": 12,
+        "total": 12,
+        "percentage": 100
+      },
+      "difficulty": "Easy",
+      "status": "completed"
+    },
+    {
+      "id": 112,
+      "title": "Footprinting",
+      "url": "https://academy.hackthebox.com/module/details/112",
+      "progress": {
+        "completed": 21,
+        "total": 21,
+        "percentage": 100
+      },
+      "difficulty": "Medium",
+      "status": "completed"
+    },
+    {
+      "id": 144,
+      "title": "Information Gathering - Web Edition",
+      "url": "https://academy.hackthebox.com/module/details/144",
+      "progress": {
+        "completed": 15,
+        "total": 19,
+        "percentage": 78.95
+      },
+      "difficulty": "Easy",
+      "status": "in_progress"
+    },
+    {
+      "id": 108,
+      "title": "Vulnerability Assessment",
+      "url": "https://academy.hackthebox.com/module/details/108",
+      "progress": {
+        "completed": 0,
+        "total": 17,
+        "percentage": 0
+      },
+      "difficulty": "Easy",
+      "status": "not_started"
+    },
+    {
+      "id": 24,
+      "title": "File Transfers",
+      "url": "https://academy.hackthebox.com/module/details/24",
+      "progress": {
+        "completed": 0,
+        "total": 10,
+        "percentage": 0
+      },
+      "difficulty": "Medium",
+      "status": "not_started"
+    },
+    {
+      "id": 115,
+      "title": "Shells & Payloads",
+      "url": "https://academy.hackthebox.com/module/details/115",
+      "progress": {
+        "completed": 0,
+        "total": 17,
+        "percentage": 0
+      },
+      "difficulty": "Medium",
+      "status": "not_started"
+    },
+    {
+      "id": 39,
+      "title": "Using the Metasploit Framework",
+      "url": "https://academy.hackthebox.com/module/details/39",
+      "progress": {
+        "completed": 0,
+        "total": 15,
+        "percentage": 0
+      },
+      "difficulty": "Easy",
+      "status": "not_started"
+    },
+    {
+      "id": 147,
+      "title": "Password Attacks",
+      "url": "https://academy.hackthebox.com/module/details/147",
+      "progress": {
+        "completed": 0,
+        "total": 26,
+        "percentage": 0
+      },
+      "difficulty": "Medium",
+      "status": "not_started",
+      "isNew": true
+    },
+    {
+      "id": 116,
+      "title": "Attacking Common Services",
+      "url": "https://academy.hackthebox.com/module/details/116",
+      "progress": {
+        "completed": 0,
+        "total": 19,
+        "percentage": 0
+      },
+      "difficulty": "Medium",
+      "status": "not_started"
+    },
+    {
+      "id": 158,
+      "title": "Pivoting, Tunneling, and Port Forwarding",
+      "url": "https://academy.hackthebox.com/module/details/158",
+      "progress": {
+        "completed": 0,
+        "total": 18,
+        "percentage": 0
+      },
+      "difficulty": "Medium",
+      "status": "not_started"
+    },
+    {
+      "id": 143,
+      "title": "Active Directory Enumeration & Attacks",
+      "url": "https://academy.hackthebox.com/module/details/143",
+      "progress": {
+        "completed": 0,
+        "total": 36,
+        "percentage": 0
+      },
+      "difficulty": "Medium",
+      "status": "not_started"
+    },
+    {
+      "id": 110,
+      "title": "Using Web Proxies",
+      "url": "https://academy.hackthebox.com/module/details/110",
+      "progress": {
+        "completed": 0,
+        "total": 15,
+        "percentage": 0
+      },
+      "difficulty": "Easy",
+      "status": "not_started"
+    },
+    {
+      "id": 54,
+      "title": "Attacking Web Applications with Ffuf",
+      "url": "https://academy.hackthebox.com/module/details/54",
+      "progress": {
+        "completed": 0,
+        "total": 13,
+        "percentage": 0
+      },
+      "difficulty": "Easy",
+      "status": "not_started"
+    },
+    {
+      "id": 57,
+      "title": "Login Brute Forcing",
+      "url": "https://academy.hackthebox.com/module/details/57",
+      "progress": {
+        "completed": 0,
+        "total": 13,
+        "percentage": 0
+      },
+      "difficulty": "Easy",
+      "status": "not_started"
+    },
+    {
+      "id": 33,
+      "title": "SQL Injection Fundamentals",
+      "url": "https://academy.hackthebox.com/module/details/33",
+      "progress": {
+        "completed": 3,
+        "total": 17,
+        "percentage": 17.65
+      },
+      "difficulty": "Medium",
+      "status": "in_progress"
+    },
+    {
+      "id": 58,
+      "title": "SQLMap Essentials",
+      "url": "https://academy.hackthebox.com/module/details/58",
+      "progress": {
+        "completed": 0,
+        "total": 11,
+        "percentage": 0
+      },
+      "difficulty": "Easy",
+      "status": "not_started"
+    },
+    {
+      "id": 103,
+      "title": "Cross-Site Scripting (XSS)",
+      "url": "https://academy.hackthebox.com/module/details/103",
+      "progress": {
+        "completed": 0,
+        "total": 10,
+        "percentage": 0
+      },
+      "difficulty": "Easy",
+      "status": "not_started"
+    },
+    {
+      "id": 23,
+      "title": "File Inclusion",
+      "url": "https://academy.hackthebox.com/module/details/23",
+      "progress": {
+        "completed": 0,
+        "total": 11,
+        "percentage": 0
+      },
+      "difficulty": "Medium",
+      "status": "not_started"
+    },
+    {
+      "id": 136,
+      "title": "File Upload Attacks",
+      "url": "https://academy.hackthebox.com/module/details/136",
+      "progress": {
+        "completed": 0,
+        "total": 11,
+        "percentage": 0
+      },
+      "difficulty": "Medium",
+      "status": "not_started"
+    },
+    {
+      "id": 109,
+      "title": "Command Injections",
+      "url": "https://academy.hackthebox.com/module/details/109",
+      "progress": {
+        "completed": 0,
+        "total": 12,
+        "percentage": 0
+      },
+      "difficulty": "Medium",
+      "status": "not_started"
+    },
+    {
+      "id": 134,
+      "title": "Web Attacks",
+      "url": "https://academy.hackthebox.com/module/details/134",
+      "progress": {
+        "completed": 0,
+        "total": 18,
+        "percentage": 0
+      },
+      "difficulty": "Medium",
+      "status": "not_started"
+    },
+    {
+      "id": 113,
+      "title": "Attacking Common Applications",
+      "url": "https://academy.hackthebox.com/module/details/113",
+      "progress": {
+        "completed": 0,
+        "total": 33,
+        "percentage": 0
+      },
+      "difficulty": "Medium",
+      "status": "not_started"
+    },
+    {
+      "id": 51,
+      "title": "Linux Privilege Escalation",
+      "url": "https://academy.hackthebox.com/module/details/51",
+      "progress": {
+        "completed": 0,
+        "total": 28,
+        "percentage": 0
+      },
+      "difficulty": "Easy",
+      "status": "not_started"
+    },
+    {
+      "id": 67,
+      "title": "Windows Privilege Escalation",
+      "url": "https://academy.hackthebox.com/module/details/67",
+      "progress": {
+        "completed": 0,
+        "total": 33,
+        "percentage": 0
+      },
+      "difficulty": "Medium",
+      "status": "not_started"
+    },
+    {
+      "id": 162,
+      "title": "Documentation & Reporting",
+      "url": "https://academy.hackthebox.com/module/details/162",
+      "progress": {
+        "completed": 0,
+        "total": 8,
+        "percentage": 0
+      },
+      "difficulty": "Easy",
+      "status": "not_started"
+    },
+    {
+      "id": 163,
+      "title": "Attacking Enterprise Networks",
+      "url": "https://academy.hackthebox.com/module/details/163",
+      "progress": {
+        "completed": 0,
+        "total": 14,
+        "percentage": 0
+      },
+      "difficulty": "Medium",
+      "status": "not_started"
+    }
+  ],
+  "summary": {
+    "totalModules": 28,
+    "completedModules": 4,
+    "inProgressModules": 2,
+    "notStartedModules": 22,
+    "totalSections": 509,
+    "completedSections": 74,
+    "overallProgress": 14.5
+  },
+  "lastUpdated": "2024-01-20",
+  "cpts": {
+    "isEnrolled": true,
+    "completedModules": [90, 77, 19, 112],
+    "currentlyStudying": [144, 33]
+  }
+}
