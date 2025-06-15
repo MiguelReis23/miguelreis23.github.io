@@ -392,13 +392,6 @@ const HackTheBox = () => {
                 
                 <div className="machines-stats">
                   <div 
-                    className={`machine-stat-item clickable ${activeMachineFilter === 'startingPoint' ? 'active' : ''}`}
-                    onClick={() => handleMachineFilter('startingPoint')}
-                  >
-                    <span className="machine-stat-number">{startingPointCount}</span>
-                    <span className="machine-stat-label">Starting Point</span>
-                  </div>
-                  <div 
                     className={`machine-stat-item clickable ${activeMachineFilter === 'active' ? 'active' : ''}`}
                     onClick={() => handleMachineFilter('active')}
                   >
@@ -413,6 +406,13 @@ const HackTheBox = () => {
                     <span className="machine-stat-label">Retired</span>
                   </div>
                   <div 
+                    className={`machine-stat-item clickable ${activeMachineFilter === 'startingPoint' ? 'active' : ''}`}
+                    onClick={() => handleMachineFilter('startingPoint')}
+                  >
+                    <span className="machine-stat-number">{startingPointCount}</span>
+                    <span className="machine-stat-label">Starting Point</span>
+                  </div>
+                  <div 
                     className={`machine-stat-item clickable ${activeMachineFilter === 'total' ? 'active' : ''}`}
                     onClick={() => handleMachineFilter('total')}
                   >
@@ -421,47 +421,6 @@ const HackTheBox = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Starting Point Machines */}
-              {(activeMachineFilter === 'startingPoint' || activeMachineFilter === 'total') && (
-                <div className="machine-category">
-                  <h3 className="category-title">
-                    {React.createElement(getIconComponent(cybersecurityNavigation.machineCategories[0].icon), { className: "category-icon" })}
-                    {cybersecurityNavigation.machineCategories[0].title} ({startingPointCount})
-                  </h3>
-                  <p className="category-description">{cybersecurityNavigation.machineCategories[0].description}</p>
-                  
-                  <div className="machines-grid">
-                    {startingPointMachines.map((machine, index) => (
-                      <div key={index} className={`machine-card ${machine.difficulty.toLowerCase().replace(' ', '-')}`}>
-                        <div className="machine-header">
-                          <div className="machine-title">
-                            {getOSIcon(machine.os)}
-                            <span className="machine-name">{machine.name}</span>
-                          </div>
-                          <span className="machine-tier">Tier {machine.tier}</span>
-                        </div>
-                        <div className="machine-info">
-                          <span className={`difficulty-badge ${machine.difficulty.toLowerCase().replace(' ', '-')}`}>
-                            {machine.difficulty}
-                          </span>
-                          <span className="machine-date">{machine.date}</span>
-                        </div>
-                        {machine.tags && machine.tags.length > 0 && (
-                          <div className="machine-tags">
-                            {machine.tags.slice(0, 3).map((tag, tagIndex) => (
-                              <span key={tagIndex} className="machine-tag">{tag}</span>
-                            ))}
-                            {machine.tags.length > 3 && (
-                              <span className="machine-tag">+{machine.tags.length - 3} more</span>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
 
               {/* Active Machines */}
               {(activeMachineFilter === 'active' || activeMachineFilter === 'total') && (
@@ -550,6 +509,47 @@ const HackTheBox = () => {
                             {machine.tags.map((tag, tagIndex) => (
                               <span key={tagIndex} className="machine-tag">{tag}</span>
                             ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Starting Point Machines */}
+              {(activeMachineFilter === 'startingPoint' || activeMachineFilter === 'total') && (
+                <div className="machine-category">
+                  <h3 className="category-title">
+                    {React.createElement(getIconComponent(cybersecurityNavigation.machineCategories[0].icon), { className: "category-icon" })}
+                    {cybersecurityNavigation.machineCategories[0].title} ({startingPointCount})
+                  </h3>
+                  <p className="category-description">{cybersecurityNavigation.machineCategories[0].description}</p>
+                  
+                  <div className="machines-grid">
+                    {startingPointMachines.map((machine, index) => (
+                      <div key={index} className={`machine-card ${machine.difficulty.toLowerCase().replace(' ', '-')}`}>
+                        <div className="machine-header">
+                          <div className="machine-title">
+                            {getOSIcon(machine.os)}
+                            <span className="machine-name">{machine.name}</span>
+                          </div>
+                          <span className="machine-tier">Tier {machine.tier}</span>
+                        </div>
+                        <div className="machine-info">
+                          <span className={`difficulty-badge ${machine.difficulty.toLowerCase().replace(' ', '-')}`}>
+                            {machine.difficulty}
+                          </span>
+                          <span className="machine-date">{machine.date}</span>
+                        </div>
+                        {machine.tags && machine.tags.length > 0 && (
+                          <div className="machine-tags">
+                            {machine.tags.slice(0, 3).map((tag, tagIndex) => (
+                              <span key={tagIndex} className="machine-tag">{tag}</span>
+                            ))}
+                            {machine.tags.length > 3 && (
+                              <span className="machine-tag">+{machine.tags.length - 3} more</span>
+                            )}
                           </div>
                         )}
                       </div>
