@@ -15,11 +15,11 @@
     { "name": "Unified", "difficulty": "Very Easy", "date": "July 2024", "tier": 2, "os": "Linux", "tags": ["Vulnerability Assessment", "Databases", "Custom Applications", "MongoDB", "Java", "Reconnaissance", "Clear Text Credentials", "Default Credentials", "Code Injection"]}
   ],
   "Retired": [
-    { "name": "PermX", "difficulty": "Easy", "date": "July 2024", "os": "Linux", "walkthrough": null },
-    { "name": "Lame", "difficulty": "Easy", "date": "July 2024", "os": "Linux", "walkthrough": "legacy.md" },
-    { "name": "Headless", "difficulty": "Easy", "date": "July 2024", "os": "Linux", "walkthrough": null },
-    { "name": "Cap", "difficulty": "Easy", "date": "August 2024", "os": "Linux", "walkthrough": null },
-    { "name": "UnderPass", "difficulty": "Easy", "date": "February 2025", "os": "Linux", "walkthrough": "blue.md" }
+    { "name": "PermX", "difficulty": "Easy", "date": "July 2024", "os": "Linux", "walkthrough": "PermX/PermX.md" },
+    { "name": "Lame", "difficulty": "Easy", "date": "July 2024", "os": "Linux", "walkthrough": "Lame/Lame.md" },
+    { "name": "Headless", "difficulty": "Easy", "date": "July 2024", "os": "Linux", "walkthrough": "Headless/Headless.md" },
+    { "name": "Cap", "difficulty": "Easy", "date": "August 2024", "os": "Linux", "walkthrough": "Cap/Cap.md" },
+    { "name": "UnderPass", "difficulty": "Easy", "date": "February 2025", "os": "Linux", "walkthrough": "UnderPass/UnderPass.md" }
   ],
   "Active": [
     { "name": "Planning", "difficulty": "Medium", "date": "June 2025", "os": "Linux", "walkthrough": null },

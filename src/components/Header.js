@@ -52,11 +52,9 @@ const Header = () => {
             <li>
               <Link to="/projects" onClick={() => setMobileMenuOpen(false)}> Projects</Link>
             </li>
-            {/* <li>
-              <Link to="/htb" onClick={() => setMobileMenuOpen(false)}>
-                HTB <FaToolbox className="construction-icon" title="Under Construction" />
-              </Link>
-            </li> */}
+            <li>
+              <Link to="/htb" onClick={() => setMobileMenuOpen(false)}> Cybersecurity </Link>
+            </li>
             <li>
               <Link to="/contact" onClick={() => setMobileMenuOpen(false)}> Contact</Link>
             </li>
