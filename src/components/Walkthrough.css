@@ -1,0 +1,279 @@
+/* Walkthrough Overlay */
+.walkthrough-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.walkthrough-container {
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(88, 166, 255, 0.2);
+}
+
+.walkthrough-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(88, 166, 255, 0.1);
+  background-color: var(--bg-tertiary);
+  border-radius: 12px 12px 0 0;
+}
+
+.back-button {
+  background-color: var(--accent-primary);
+  color: #0d1117;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.back-button:hover {
+  background-color: var(--accent-secondary);
+  transform: translateY(-1px);
+}
+
+.walkthrough-header h2 {
+  margin: 0;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.walkthrough-content {
+  padding: 2rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.walkthrough-loading,
+.walkthrough-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  font-size: 2rem;
+  color: var(--accent-primary);
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Markdown Content Styling */
+.walkthrough-content h1,
+.walkthrough-content h2,
+.walkthrough-content h3,
+.walkthrough-content h4,
+.walkthrough-content h5,
+.walkthrough-content h6 {
+  color: var(--text-primary);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.walkthrough-content h1 {
+  font-size: 2rem;
+  border-bottom: 2px solid var(--accent-primary);
+  padding-bottom: 0.5rem;
+}
+
+.walkthrough-content h2 {
+  font-size: 1.5rem;
+  color: var(--accent-primary);
+}
+
+.walkthrough-content p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.walkthrough-content ul,
+.walkthrough-content ol {
+  color: var(--text-secondary);
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.walkthrough-content li {
+  margin-bottom: 0.5rem;
+}
+
+.walkthrough-content blockquote {
+  border-left: 4px solid var(--accent-primary);
+  background-color: rgba(88, 166, 255, 0.1);
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+
+.walkthrough-content blockquote p {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.walkthrough-content .code-block {
+  background-color: var(--bg-primary);
+  border: 1px solid rgba(88, 166, 255, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.walkthrough-content .code-block code {
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  background: none;
+  padding: 0;
+}
+
+.walkthrough-content code {
+  background-color: rgba(88, 166, 255, 0.1);
+  color: var(--accent-primary);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+}
+
+.walkthrough-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.walkthrough-content th,
+.walkthrough-content td {
+  border: 1px solid rgba(88, 166, 255, 0.2);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.walkthrough-content th {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-weight: bold;
+}
+
+.walkthrough-content td {
+  color: var(--text-secondary);
+}
+
+.walkthrough-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1rem 0;
+  border: 1px solid rgba(88, 166, 255, 0.2);
+}
+
+/* Special styling for HTB Rules content */
+.walkthrough-content h1:contains("HackTheBox Rules"),
+.walkthrough-content h1:contains("Walkthrough Not Available") {
+  color: #f39c12;
+  border-bottom-color: #f39c12;
+}
+
+.walkthrough-content h2:contains("Active Machine Walkthrough Policy") {
+  color: #e74c3c;
+}
+
+.walkthrough-content h3:contains("Why No Active Machine Walkthroughs?") {
+  color: #e67e22;
+}
+
+.walkthrough-content h3:contains("When Will Walkthroughs Be Available?") {
+  color: #f39c12;
+}
+
+.walkthrough-content h3:contains("Alternative Learning Resources") {
+  color: #27ae60;
+}
+
+/* Warning-style blockquote for HTB rules */
+.walkthrough-content blockquote:contains("Active machines and challenges") {
+  border-left-color: #e74c3c;
+  background-color: rgba(231, 76, 60, 0.1);
+}
+
+/* Success/info icons in lists */
+.walkthrough-content li:contains("✅"),
+.walkthrough-content li:contains("❌"),
+.walkthrough-content li:contains("⏳") {
+  list-style: none;
+  margin-left: -1rem;
+}
+
+.walkthrough-content li:contains("🎯"),
+.walkthrough-content li:contains("🔒"),
+.walkthrough-content li:contains("📚"),
+.walkthrough-content li:contains("🤝"),
+.walkthrough-content li:contains("📖"),
+.walkthrough-content li:contains("💬"),
+.walkthrough-content li:contains("🔍"),
+.walkthrough-content li:contains("🎯") {
+  list-style: none;
+  margin-left: -1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .walkthrough-overlay {
+    padding: 1rem;
+  }
+  
+  .walkthrough-container {
+    max-height: 95vh;
+  }
+  
+  .walkthrough-header {
+    padding: 1rem;
+  }
+  
+  .walkthrough-content {
+    padding: 1rem;
+  }
+  
+  .walkthrough-header h2 {
+    font-size: 1.25rem;
+  }
+}

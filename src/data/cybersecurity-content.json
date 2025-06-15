@@ -1,0 +1,69 @@
+{
+  "overview": {
+    "currentFocus": {
+      "primary": {
+        "title": "CPTS Certification",
+        "description": "Pursuing HTB's Certified Penetration Testing Specialist certification"
+      },
+      "secondary": {
+        "title": "Hands-On Practice",
+        "description": "Engaging with Active and Retired machines to learn and apply skills"
+      }
+    },
+    "recentActivity": [
+      {
+        "icon": "FaServer",
+        "description": "Completed Planning and Dog machines",
+        "type": "machines"
+      },
+      {
+        "icon": "FaGraduationCap", 
+        "description": "Finished Footprinting module in CPTS",
+        "type": "module"
+      }
+    ],
+    "nextGoals": [
+      {
+        "icon": "🎯",
+        "description": "Complete remaining CPTS modules",
+        "type": "certification"
+      },
+      {
+        "icon": "🏆",
+        "description": "Take CPTS certification exam",
+        "type": "exam"
+      },
+      {
+        "icon": "🚀",
+        "description": "Begin OSCP preparation",
+        "type": "future"
+      }
+    ]
+  },
+  "journey": {
+    "title": "CPTS Certification Journey",
+    "description": "Hands-on certification that assesses the candidates' penetration testing skills",
+    "timeline": [
+      {
+        "title": "Foundation Building",
+        "description": "Completed fundamental modules covering networking, web applications, and basic exploitation techniques.",
+        "status": "completed"
+      },
+      {
+        "title": "Skill Development", 
+        "description": "Advanced through complex topics including Active Directory, privilege escalation, and post-exploitation.",
+        "status": "completed"
+      },
+      {
+        "title": "Certification Preparation",
+        "description": "Currently completing final modules and preparing for the hands-on CPTS examination.",
+        "status": "current"
+      },
+      {
+        "title": "Professional Application",
+        "description": "Goal: Apply certified skills in real-world pentesting scenarios and pursue OSCP certification.",
+        "status": "future"
+      }
+    ]
+  }
+}

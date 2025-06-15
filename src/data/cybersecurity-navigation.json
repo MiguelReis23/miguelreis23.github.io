@@ -1,0 +1,39 @@
+{
+  "navigation": [
+    {
+      "id": "overview",
+      "label": "Overview", 
+      "icon": "FaChartLine"
+    },
+    {
+      "id": "cpts",
+      "label": "CPTS Journey",
+      "icon": "FaGraduationCap"
+    },
+    {
+      "id": "machines", 
+      "label": "Machines",
+      "icon": "FaServer"
+    }
+  ],
+  "machineCategories": [
+    {
+      "id": "starting-point",
+      "title": "Starting Point", 
+      "icon": "FaTerminal",
+      "description": "Learn the basics of Penetration Testing"
+    },
+    {
+      "id": "active",
+      "title": "Active Machines",
+      "icon": "FaFire", 
+      "description": "Currently Active machines in the HTB Labs platform"
+    },
+    {
+      "id": "retired",
+      "title": "Retired Machines",
+      "icon": "FaLock",
+      "description": "Retired machines in the HTB Labs platform"
+    }
+  ]
+}

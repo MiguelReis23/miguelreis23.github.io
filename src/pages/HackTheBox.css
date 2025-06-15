@@ -305,6 +305,27 @@
   border-left: 4px solid rgba(255, 255, 255, 0.3);
 }
 
+/* Difficulty-based borders for completed and in-progress modules */
+.module-item.completed.fundamental,
+.module-item.in_progress.fundamental {
+  border-left: 4px solid #21c900;
+}
+
+.module-item.completed.easy,
+.module-item.in_progress.easy {
+  border-left: 4px solid var(--success);
+}
+
+.module-item.completed.medium,
+.module-item.in_progress.medium {
+  border-left: 4px solid var(--warning);
+}
+
+.module-item.completed.hard,
+.module-item.in_progress.hard {
+  border-left: 4px solid var(--danger);
+}
+
 .module-info {
   flex: 1;
 }
@@ -584,8 +605,8 @@ tr.difficulty-hard td:nth-child(2) {
 }
 
 .journey-item.current .journey-marker {
-  background-color: #9fef00;
-  border-color: #9fef00;
+  background-color: var(--success);
+  border-color: var(--success);
 }
 
 .journey-content h3 {
@@ -627,6 +648,11 @@ tr.difficulty-hard td:nth-child(2) {
   margin-bottom: 0.5rem;
 }
 
+/* Override global section-title styling to remove blue underline */
+.section-title::after {
+  display: none;
+}
+
 .section-icon {
   font-size: 1.5rem;
   color: var(--accent-primary);
@@ -648,11 +674,40 @@ tr.difficulty-hard td:nth-child(2) {
 }
 
 .machine-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   padding: 1rem;
   background-color: var(--bg-tertiary);
   border-radius: 8px;
   border: 1px solid rgba(88, 166, 255, 0.1);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.machine-stat-item.clickable {
+  cursor: pointer;
+}
+
+.machine-stat-item.clickable:hover {
+  background-color: rgba(88, 166, 255, 0.1);
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+.machine-stat-item.active {
+  background-color: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+  color: var(--text-primary);
+}
+
+.machine-stat-item.active .machine-stat-number {
+  color: var(--text-primary);
+}
+
+.machine-stat-item.active .machine-stat-label {
+  color: var(--text-primary);
 }
 
 .machine-stat-number {
@@ -788,16 +843,138 @@ tr.difficulty-hard td:nth-child(2) {
   color: #00a2ed;
 }
 
-/* Difficulty Badge Updates for Very Easy */
+/* Difficulty Badge Updates for Very Easy and Fundamental */
 .difficulty-badge.very-easy,
-.machine-card.very-easy {
+.difficulty-badge.fundamental,
+.machine-card.very-easy,
+.machine-card.fundamental {
   --difficulty-color: #2ecc71;
 }
 
-.difficulty-badge.very-easy {
+.difficulty-badge.very-easy,
+.difficulty-badge.fundamental {
   background-color: rgba(46, 204, 113, 0.1);
   color: #2ecc71;
   border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+/* Machine Actions - Walkthrough Functionality */
+.machine-actions {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(88, 166, 255, 0.1);
+}
+
+.walkthrough-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  background-color: rgba(88, 166, 255, 0.1);
+  border: 1px solid rgba(88, 166, 255, 0.2);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.walkthrough-link:hover {
+  background-color: rgba(88, 166, 255, 0.2);
+  border-color: var(--accent-primary);
+  transform: translateY(-1px);
+}
+
+.walkthrough-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-tertiary);
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem;
+  background-color: rgba(139, 148, 158, 0.05);
+  border: 1px solid rgba(139, 148, 158, 0.1);
+  border-radius: 6px;
+}
+
+.walkthrough-icon {
+  font-size: 1rem;
+}
+
+.walkthrough-icon.disabled {
+  opacity: 0.5;
+}
+
+/* Walkthrough Button Styling */
+.walkthrough-button {
+  background-color: rgba(88, 166, 255, 0.2);
+  color: var(--accent-primary);
+  border: 1px solid rgba(88, 166, 255, 0.2);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-family: 'JetBrains Mono', monospace;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.walkthrough-button:hover {
+  background-color: var(--accent-secondary);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.walkthrough-placeholder {
+  background-color: rgba(88, 166, 255, 0.1);
+  color: var(--text-secondary);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-family: 'JetBrains Mono', monospace;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  border: 1px solid rgba(88, 166, 255, 0.2);
+}
+
+.walkthrough-icon {
+  font-size: 0.75rem;
+}
+
+.walkthrough-icon.disabled {
+  opacity: 0.5;
+}
+
+.walkthrough-button.disabled {
+  background-color: rgba(88, 166, 255, 0.1);
+  color: var(--text-secondary);
+  border: 1px solid rgba(88, 166, 255, 0.2);
+  cursor: pointer; /* Still clickable to show rules */
+}
+
+.walkthrough-button.disabled:hover {
+  background-color: rgba(88, 166, 255, 0.2);
+  transform: none;
+}
+
+/* Active Machine Walkthrough Button Styling */
+.walkthrough-button.active-machine {
+  background-color: rgba(88, 166, 255, 0.2);
+  color: var(--accent-primary);
+  border: 1px solid rgba(88, 166, 255, 0.2);
+}
+
+.walkthrough-button.active-machine:hover {
+  background-color: rgba(88, 166, 255, 0.3);
+  border-color: var(--accent-secondary);
+  color: var(--text-primary);
+  transform: translateY(-1px);
 }
 
 /* Responsive Design for Machine Cards */
@@ -917,43 +1094,41 @@ tr.difficulty-hard td:nth-child(2) {
 /* Navigation Tabs */
 .cyber-nav {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
   margin: 2rem 0;
-  padding: 0.5rem;
-  background-color: var(--bg-secondary);
-  border-radius: 12px;
-  border: 1px solid rgba(88, 166, 255, 0.1);
+  justify-content: center;
 }
 
 .nav-tab {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1rem 1.5rem;
-  background: none;
-  border: none;
-  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid rgba(139, 148, 158, 0.2);
+  border-radius: 4px;
   color: var(--text-secondary);
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
 }
 
 .nav-tab:hover {
   background-color: rgba(88, 166, 255, 0.1);
-  color: var(--text-primary);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
 }
 
 .nav-tab.active {
-  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-  color: #0d1117;
-  font-weight: 600;
+  background-color: var(--accent-secondary);
+  color: var(--text-primary);
+  border-color: var(--accent-secondary);
 }
 
 .nav-tab.active .nav-icon {
-  color: #0d1117;
+  color: var(--text-primary);
 }
 
 .nav-icon {
@@ -1237,13 +1412,12 @@ tr.difficulty-hard td:nth-child(2) {
 /* Responsive Design for Navigation */
 @media (max-width: 768px) {
   .cyber-nav {
-    flex-wrap: wrap;
     gap: 0.5rem;
   }
   
   .nav-tab {
-    padding: 0.75rem 1rem;
-    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
   }
   
   .nav-label {
@@ -1270,3 +1444,5 @@ tr.difficulty-hard td:nth-child(2) {
     gap: 1rem;
   }
 }
+
+

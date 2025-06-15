@@ -15,18 +15,14 @@
     { "name": "Unified", "difficulty": "Very Easy", "date": "July 2024", "tier": 2, "os": "Linux", "tags": ["Vulnerability Assessment", "Databases", "Custom Applications", "MongoDB", "Java", "Reconnaissance", "Clear Text Credentials", "Default Credentials", "Code Injection"]}
   ],
   "Retired": [
-    { "name": "PermX", "difficulty": "Easy", "points": 20, "date": "May 2022", "os": "Linux", "tags": ["SMB", "CVE"] },
-    { "name": "Legacy", "difficulty": "Easy", "points": 20, "date": "May 2022", "os": "Windows", "tags": ["SMB", "CVE"] },
-    { "name": "Devel", "difficulty": "Easy", "points": 20, "date": "June 2022", "os": "Windows", "tags": ["Web", "FTP"] },
-    { "name": "Bashed", "difficulty": "Easy", "points": 20, "date": "June 2022", "os": "Linux", "tags": ["Web", "SUDO"] },
-    { "name": "Blue", "difficulty": "Easy", "points": 20, "date": "July 2022", "os": "Windows", "tags": ["SMB", "EternalBlue"] },
-    { "name": "Optimum", "difficulty": "Easy", "points": 20, "date": "July 2022", "os": "Windows", "tags": ["Web", "CVE"] },
-    { "name": "Bastard", "difficulty": "Medium", "points": 30, "date": "August 2022", "os": "Windows", "tags": ["Web", "Drupal"] },
-    { "name": "Nineveh", "difficulty": "Medium", "points": 30, "date": "September 2022", "os": "Linux", "tags": ["Web", "LFI"] }
+    { "name": "PermX", "difficulty": "Easy", "date": "July 2024", "os": "Linux", "walkthrough": null },
+    { "name": "Lame", "difficulty": "Easy", "date": "July 2024", "os": "Linux", "walkthrough": "legacy.md" },
+    { "name": "Headless", "difficulty": "Easy", "date": "July 2024", "os": "Linux", "walkthrough": null },
+    { "name": "Cap", "difficulty": "Easy", "date": "August 2024", "os": "Linux", "walkthrough": null },
+    { "name": "UnderPass", "difficulty": "Easy", "date": "February 2025", "os": "Linux", "walkthrough": "blue.md" }
   ],
-    "Active": [
-        { "name": "Silo", "difficulty": "Medium", "date": "July 2024", "tier": 1, "os": "Linux", "tags": ["Custom Applications", "Protocols", "Redis", "PHP", "Reconnaissance", "Web Site Structure Discovery", "Arbitrary File Upload"] },
-        { "name": "Horizon", "difficulty": "Medium", "date": "July 2024", "tier": 2, "os": "Linux", "tags": ["Custom Applications", "Protocols", "Apache", "PHP", "Reconnaissance", "Web Site Structure Discovery", "Arbitrary File Upload"] },
-        { "name": "Cobalt Strike", "difficulty": "Medium", "date": "", "tier": 2, "os": "", "tags": ["Cobalt Strike"] }
-    ]
+  "Active": [
+    { "name": "Planning", "difficulty": "Medium", "date": "June 2025", "os": "Linux", "walkthrough": null },
+    { "name": "Dog", "difficulty": "Medium", "date": "June 2025", "os": "Linux", "walkthrough": null }
+  ]
 }

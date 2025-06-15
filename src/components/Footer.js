@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaHeart, FaGithub, FaLinkedin, FaTerminal } from 'react-icons/fa';
+import { FaHeart, FaGithub, FaLinkedin, FaTerminal, FaCoffee } from 'react-icons/fa';
 import './Footer.css';
 
 const Footer = () => {
@@ -19,7 +19,7 @@ const Footer = () => {
         <div className="footer-copyright">
           <p>© {currentYear} Miguel Reis. All rights reserved.</p>
           <p className="made-with">
-            Made with <FaHeart className="heart-icon" />
+            Made with <FaHeart className='heart-icon'/> and ☕.
           </p>
         </div>
         

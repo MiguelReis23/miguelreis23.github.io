@@ -1,0 +1,77 @@
+{
+  "skills": {
+    "title": "Skills & Tools",
+    "description": "Technical skills and tools developed through hands-on penetration testing experience.",
+    "categories": [
+      {
+        "title": "Reconnaissance",
+        "icon": "FaTerminal",
+        "skills": [
+          "Nmap",
+          "Directory Enumeration", 
+          "Service Discovery",
+          "OSINT"
+        ]
+      },
+      {
+        "title": "Web Application Testing",
+        "icon": "FaNetworkWired",
+        "skills": [
+          "SQL Injection",
+          "XSS", 
+          "File Upload Vulnerabilities",
+          "Authentication Bypass"
+        ]
+      },
+      {
+        "title": "System Exploitation",
+        "icon": "FaServer",
+        "skills": [
+          "Buffer Overflow",
+          "Privilege Escalation",
+          "Remote Code Execution", 
+          "CVE Research"
+        ]
+      },
+      {
+        "title": "Post-Exploitation",
+        "icon": "FaLock",
+        "skills": [
+          "Lateral Movement",
+          "Persistence",
+          "Data Exfiltration",
+          "Covering Tracks"
+        ]
+      }
+    ]
+  },
+  "tools": {
+    "title": "Penetration Testing Tools",
+    "items": [
+      {
+        "name": "Nmap",
+        "icon": "FaTerminal"
+      },
+      {
+        "name": "Metasploit", 
+        "icon": "FaServer"
+      },
+      {
+        "name": "Burp Suite",
+        "icon": "FaNetworkWired"
+      },
+      {
+        "name": "SQLMap",
+        "icon": "FaShieldAlt"
+      },
+      {
+        "name": "Gobuster",
+        "icon": "FaFire"
+      },
+      {
+        "name": "John the Ripper",
+        "icon": "FaLock"
+      }
+    ]
+  }
+}
