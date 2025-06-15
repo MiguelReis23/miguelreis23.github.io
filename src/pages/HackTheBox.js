@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { FaTrophy, FaServer, FaTerminal, FaNetworkWired, FaLock, FaFire, FaChevronDown } from 'react-icons/fa';
+import { FaTrophy, FaServer, FaTerminal, FaNetworkWired, FaLock, FaFire, FaChevronDown, FaLinux, FaWindows, FaDesktop, FaGraduationCap, FaChartLine, FaShieldAlt } from 'react-icons/fa';
 import CodeBlock from '../components/CodeBlock';
 import './HackTheBox.css';
 
 const HackTheBox = () => {
-  // State for collapsible modules
+  // State for navigation and collapsible modules
+  const [activeSection, setActiveSection] = useState('overview');
   const [isModulesExpanded, setIsModulesExpanded] = useState(false);
   const [animationState, setAnimationState] = useState('');
   
@@ -29,6 +30,9 @@ const HackTheBox = () => {
   
   // Get HTB Academy modules data from JSON
   const htbModulesData = require('../data/htb-academy-modules.json');
+  
+  // Get HTB Machines data from JSON
+  const htbMachinesData = require('../data/htb-machines.json');
   
   // Calculate derived data automatically
   const processedModules = htbModulesData.modules.map(module => ({
@@ -67,35 +71,38 @@ const HackTheBox = () => {
   
   const totalProgress = summary.overallProgress;
   
-  // Completed machines
-  const boxesCompleted = [
-    { name: "Lame", difficulty: "Easy", points: 10, date: "May 2022" },
-    { name: "Legacy", difficulty: "Easy", points: 10, date: "May 2022" },
-    { name: "Devel", difficulty: "Easy", points: 10, date: "June 2022" },
-    { name: "Bashed", difficulty: "Easy", points: 10, date: "June 2022" },
-    { name: "Blue", difficulty: "Easy", points: 10, date: "July 2022" },
-    { name: "Optimum", difficulty: "Easy", points: 10, date: "July 2022" },
-    { name: "Bastard", difficulty: "Medium", points: 20, date: "August 2022" },
-    { name: "Nineveh", difficulty: "Medium", points: 20, date: "September 2022" }
+  // Get machines from JSON data
+  const startingPointMachines = htbMachinesData["Starting Point"];
+  const activeMachines = htbMachinesData["Active"];
+  const retiredMachines = htbMachinesData["Retired"];
+  
+  // Helper function to get OS icon
+  const getOSIcon = (os) => {
+    switch(os?.toLowerCase()) {
+      case 'linux':
+        return <FaLinux className="os-icon linux" />;
+      case 'windows':
+        return <FaWindows className="os-icon windows" />;
+      default:
+        return <FaDesktop className="os-icon" />;
+    }
+  };
+
+  // Calculate machine statistics
+  const allMachines = [...startingPointMachines, ...activeMachines, ...retiredMachines];
+  const totalMachines = allMachines.length;
+  const startingPointCount = startingPointMachines.length;
+  const activeCount = activeMachines.length;
+  const retiredCount = retiredMachines.length;
+  
+  // Navigation sections
+  const sections = [
+    { id: 'overview', label: 'Overview', icon: FaChartLine },
+    { id: 'cpts', label: 'CPTS Journey', icon: FaGraduationCap },
+    { id: 'machines', label: 'Machines', icon: FaServer },
+    { id: 'skills', label: 'Skills & Tools', icon: FaShieldAlt }
   ];
 
-  // Starting Point Machines
-  const startingPointMachines = [
-    { name: "Meow", difficulty: "Very Easy", date: "June 2024", tier: 0, tags: ["Telnet", "Protocols", "Reconnaissance", "Weak Credentials", "Misconfiguration"] },
-    { name: "Fawn", difficulty: "Very Easy", date: "June 2024", tier: 0, tags: ["FTP", "Protocols", "Reconnaissance", "Anonymous/Guest Access"]},
-    {name: "Dancing", difficulty: "Very Easy", date: "June 2024", tier: 0, tags: ["Protocols", "SMB", "Reconnaissance", "Anonymous/Guest Access"]},
-    {name: "Redeemer", difficulty: "Very Easy", date: "June 2024", tier: 0, tags: ["Redis", "Vulnerability Assessment", "Databases", "Reconnaissance", "Anonymous/Guest Access"]},
-    {name: "Appointment", difficulty: "Very Easy", date: "June 2024", tier: 1, tags: ["Databases", "Apache", "MariaDB", "PHP", "SQL", "Reconnaissance", "SQL Injection"]},
-    {name: "Sequel", difficulty: "Very Easy", date: "June 2024", tier: 1, tags: ["Vulnerability Assessment", "Databases", "MySQL", "SQL", "Reconnaissance", "Weak Credentials"] },
-    {name: "Crocodile", difficulty: "Very Easy", date: "June 2024", tier: 1, tags: ["Custom Applications", "Protocols", "Apache", "FTP", "Reconnaissance", "Web Site Structure Discovery", "Clear Text Credentials", "Anonymous/Guest Access"]},
-    {name: "Responder", difficulty: "Very Easy", date: "June 2024", tier: 1, tags: ["WinRM", "Custom Applications", "Protocols", "XAMPP", "SMB", "Responder", "PHP", "Reconnaissance", "Password Cracking", "Hash Capture", "Remote File Inclusion", "Remote Code Execution"]},
-    {name: "Three", difficulty: "Very Easy", date: "July 2024", tier: 1, tags: ["Cloud", "Custom Applications", "AWS", "Reconnaissance", "Web Site Structure Discovery", "Bucket Enumeration", "Arbitrary File Upload", "Anonymous/Guest Access"]},
-    {name: "Archetype", difficulty: "Very Easy", date: "July 2024", tier: 2, tags: ["Protocols", "MSSQL", "SMB", "Powershell", "Reconnaissance", "Remote Code Execution", "Clear Text Credentials", "Information Disclosure", "Anonymous/Guest Access"]},
-    {name: "Oopsie", difficulty: "Very Easy", date: "July 2024", tier: 2, tags: ["PHP", "Custom Applications", "Apache", "Reconnaissance", "Web Site Structure Discovery", "Cookie Manipulation", "SUID Exploitation", "Authentication Bypass", "Clear Text Credentials", "Arbitrary File Upload", "Insecure Direct Object Reference (IDOR)", "Path Hijacking"]},
-    {name: "Vaccine", difficulty: "Very Easy", date: "July 2024", tier: 2, tags: ["Vulnerability Assessment", "Databases", "Custom Applications", "Protocols", "Source Code Analysis", "Apache", "PostgreSQL", "FTP", "PHP", "Reconnaissance", "Password Cracking", "SUDO Exploitation", "SQL Injection", "Remote Code Execution", "Clear Text Credentials", "Anonymous/Guest Access"]},
-    {name: "Unified", difficulty: "Very Easy", date: "July 2024", tier: 2, tags: ["Vulnerability Assessment", "Databases", "Custom Applications", "MongoDB", "Java", "Reconnaissance", "Clear Text Credentials", "Default Credentials", "Code Injection"]},
-  ]
-  
   // Code snippet examples
   const penTestNmapCode = `# Initial Network Reconnaissance
 $ sudo nmap -sC -sV -p- -oA initial_scan 10.10.10.10
@@ -161,172 +168,486 @@ Table: users
     <div className="page-container">
       <section id="htb" className="page-section htb-section">
         <div className="page-header">
-          <h1 className="page-title">HackTheBox & CPTS Journey</h1>
-          <p className="page-subtitle">Follow my progress through cybersecurity challenges and professional certification.</p>
+          <h1 className="page-title">Cybersecurity Hub</h1>
+          <p className="page-subtitle">Explore my journey through penetration testing, certifications, and hands-on security challenges.</p>
         </div>
 
-        <div className="htb-intro">
-          <div className="htb-description">
-            <p>
-              I'm currently pursuing the <strong>Hack The Box Certified Penetration Testing Specialist (CPTS)</strong> certification to enhance my practical skills in cybersecurity. This challenging certification covers various aspects of penetration testing, from initial reconnaissance to post-exploitation.
-            </p>
-            <p>
-              Currently working through <strong>{summary.totalModules} HTB Academy modules</strong> with <strong>{summary.completedModules} completed</strong> and <strong>{summary.inProgressModules} in progress</strong>. Through HTB's practical labs and challenges, I'm gaining hands-on experience with real-world scenarios that test my ability to identify vulnerabilities and exploit them ethically.
-            </p>
-          </div>
+        {/* Navigation Tabs */}
+        <div className="cyber-nav">
+          {sections.map((section) => {
+            const IconComponent = section.icon;
+            return (
+              <button
+                key={section.id}
+                className={`nav-tab ${activeSection === section.id ? 'active' : ''}`}
+                onClick={() => setActiveSection(section.id)}
+              >
+                <IconComponent className="nav-icon" />
+                <span className="nav-label">{section.label}</span>
+              </button>
+            );
+          })}
         </div>
 
-        <div className="cpts-progress-section">
-          <div 
-            className="cpts-journey-header" 
-            onClick={toggleModules}
-          >
-            <div className="journey-title-section">
-              <h2>HTB CPTS Progress</h2>
-              <div className="journey-summary">
-                <div className="progress-bar-inline">
-                  <div 
-                    className="progress-fill-inline"
-                    style={{ width: `${totalProgress}%` }}
-                  ></div>
-                </div>
-                <span className="progress-percentage-inline">{Math.round(totalProgress)}%</span>
-              </div>
-            </div>
-            <div className="htb-stats">
-              <div className="htb-stat-item">
-                <span className="htb-stat-number">{summary.completedModules}</span>
-                <span className="htb-stat-label">Completed<br />Modules</span>
-              </div>
-              <div className="htb-stat-item">
-                <span className="htb-stat-number">{summary.totalModules}</span>
-                <span className="htb-stat-label">Total<br />Modules</span>
-              </div>
-            </div>
-            <div className={`expand-icon ${isModulesExpanded ? 'expanded' : ''}`}>
-              <FaChevronDown />
-            </div>
-          </div>
-          
-          {(isModulesExpanded || animationState === 'collapsing') && (
-            <div className={`modules-content ${animationState}`}>              
-              <div className="module-list">
-                {cptsModules.map((module, index) => (
-                  <div key={index} className={`module-item ${module.status}`}>
-                    <div className="module-info">
-                      <div className="module-header">
-                        <span className="module-name">{module.name}</span>
-                        <div className="module-badges">
-                          <span className={`difficulty-badge ${module.difficulty.toLowerCase()}`}>
-                            {module.difficulty}
-                          </span>
-                          <span className="module-percentage">{module.progress}%</span>
-                        </div>
-                      </div>
-                      <div className="module-progress">
-                        <div 
-                          className="module-fill"
-                          style={{ width: `${module.progress}%` }}
-                        ></div>
-                      </div>
+        {/* Content Sections */}
+        <div className="cyber-content">
+          {/* OVERVIEW SECTION */}
+          {activeSection === 'overview' && (
+            <div className="content-section overview-section">
+              <div className="overview-grid">
+                <div className="overview-card stats-card">
+                  <h3>
+                    <FaChartLine className="card-icon" />
+                    Quick Stats
+                  </h3>
+                  <div className="stats-grid">
+                    <div className="stat-item">
+                      <span className="stat-number">{summary.completedModules}</span>
+                      <span className="stat-label">CPTS Modules Completed</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-number">{Math.round(totalProgress)}%</span>
+                      <span className="stat-label">CPTS Progress</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-number">{totalMachines}</span>
+                      <span className="stat-label">Machines Conquered</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-number">{startingPointCount + retiredCount}</span>
+                      <span className="stat-label">Completed Challenges</span>
                     </div>
                   </div>
-                ))}
+                </div>
+
+                <div className="overview-card journey-card">
+                  <h3>
+                    <FaTrophy className="card-icon" />
+                    Current Focus
+                  </h3>
+                  <div className="current-focus">
+                    <div className="focus-item">
+                      <h4>CPTS Certification</h4>
+                      <p>Pursuing HTB's Certified Penetration Testing Specialist certification</p>
+                      <div className="focus-progress">
+                        <div className="progress-bar">
+                          <div 
+                            className="progress-fill"
+                            style={{ width: `${totalProgress}%` }}
+                          ></div>
+                        </div>
+                        <span className="progress-text">{Math.round(totalProgress)}% Complete</span>
+                      </div>
+                    </div>
+                    <div className="focus-item">
+                      <h4>Active Learning</h4>
+                      <p>Currently working through {summary.inProgressModules} modules in parallel</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="overview-card recent-card">
+                  <h3>
+                    <FaFire className="card-icon" />
+                    Recent Activity
+                  </h3>
+                  <div className="recent-items">
+                    <div className="recent-item">
+                      <FaServer className="activity-icon" />
+                      <span>Completed {startingPointMachines.slice(-3).map(m => m.name).join(', ')} machines</span>
+                    </div>
+                    <div className="recent-item">
+                      <FaGraduationCap className="activity-icon" />
+                      <span>Advanced through Tier 2 Starting Point challenges</span>
+                    </div>
+                    <div className="recent-item">
+                      <FaTrophy className="activity-icon" />
+                      <span>Achieved {summary.completedModules} completed CPTS modules</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="overview-card next-card">
+                  <h3>
+                    <FaNetworkWired className="card-icon" />
+                    Next Goals
+                  </h3>
+                  <div className="next-goals">
+                    <div className="goal-item">
+                      <span className="goal-icon">🎯</span>
+                      <span>Complete remaining {summary.totalModules - summary.completedModules} CPTS modules</span>
+                    </div>
+                    <div className="goal-item">
+                      <span className="goal-icon">🏆</span>
+                      <span>Take CPTS certification exam</span>
+                    </div>
+                    <div className="goal-item">
+                      <span className="goal-icon">🚀</span>
+                      <span>Begin OSCP preparation</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           )}
-        </div>
 
-        <div className="htb-content">
-          {/* <div className="htb-showcase">
-            <h2>Skills in Action</h2>
-            <div className="code-examples">
-              <div className="code-block">
-                <div className="code-title">Network Reconnaissance</div>
-                <CodeBlock language="bash">
-                  {penTestNmapCode}
-                </CodeBlock>
+          {/* CPTS SECTION */}
+          {activeSection === 'cpts' && (
+            <div className="content-section cpts-section">
+              <div className="section-header">
+                <h2 className="section-title">
+                  <FaGraduationCap className="section-icon" />
+                  CPTS Certification Journey
+                </h2>
+                <p className="section-description">
+                  Comprehensive penetration testing certification covering reconnaissance, exploitation, and post-exploitation techniques.
+                </p>
               </div>
-              
-              <div className="code-block">
-                <div className="code-title">Web Application Testing</div>
-                <CodeBlock language="bash">
-                  {webExploitCode}
-                </CodeBlock>
-              </div>
-            </div>
-          </div> */}
-          
-          <div className="completed-boxes">
-            <h2>Machines Conquered</h2>
-            <table className="boxes-table">
-              <thead>
-                <tr>
-                  <th>Machine</th>
-                  <th>Difficulty</th>
-                  <th>Points</th>
-                  <th>Completed</th>
-                </tr>
-              </thead>
-              <tbody>
-                {boxesCompleted.map((box, index) => (
-                  <tr key={index} className={`difficulty-${box.difficulty.toLowerCase()}`}>
-                    <td><FaServer className="box-icon-small" /> {box.name}</td>
-                    <td>{box.difficulty}</td>
-                    <td>{box.points}</td>
-                    <td>{box.date}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            
-            <div className="boxes-grid">
-              {boxesCompleted.map((box, index) => (
-                <div key={index} className={`box-item ${box.difficulty.toLowerCase()}`}>
-                  <FaServer className="box-icon" />
-                  <div className="box-name">{box.name}</div>
-                  <div className="box-difficulty">{box.difficulty}</div>
+
+              <div className="cpts-progress-section">
+                <div 
+                  className="cpts-journey-header" 
+                  onClick={toggleModules}
+                >
+                  <div className="journey-title-section">
+                    <h3>HTB Academy Modules</h3>
+                    <div className="journey-summary">
+                      <div className="progress-bar-inline">
+                        <div 
+                          className="progress-fill-inline"
+                          style={{ width: `${totalProgress}%` }}
+                        ></div>
+                      </div>
+                      <span className="progress-percentage-inline">{Math.round(totalProgress)}%</span>
+                    </div>
+                  </div>
+                  <div className="htb-stats">
+                    <div className="htb-stat-item">
+                      <span className="htb-stat-number">{summary.completedModules}</span>
+                      <span className="htb-stat-label">Completed<br />Modules</span>
+                    </div>
+                    <div className="htb-stat-item">
+                      <span className="htb-stat-number">{summary.totalModules}</span>
+                      <span className="htb-stat-label">Total<br />Modules</span>
+                    </div>
+                  </div>
+                  <div className={`expand-icon ${isModulesExpanded ? 'expanded' : ''}`}>
+                    <FaChevronDown />
+                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
+                
+                {(isModulesExpanded || animationState === 'collapsing') && (
+                  <div className={`modules-content ${animationState}`}>              
+                    <div className="module-list">
+                      {cptsModules.map((module, index) => (
+                        <div key={index} className={`module-item ${module.status}`}>
+                          <div className="module-info">
+                            <div className="module-header">
+                              <span className="module-name">{module.name}</span>
+                              <div className="module-badges">
+                                <span className={`difficulty-badge ${module.difficulty.toLowerCase()}`}>
+                                  {module.difficulty}
+                                </span>
+                                <span className="module-percentage">{module.progress}%</span>
+                              </div>
+                            </div>
+                            <div className="module-progress">
+                              <div 
+                                className="module-fill"
+                                style={{ width: `${module.progress}%` }}
+                              ></div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
 
-        <div className="htb-journey">
-          <h2>Learning Path & Future Goals</h2>
-          <div className="journey-timeline">
-            <div className="journey-item completed">
-              <div className="journey-marker"></div>
-              <div className="journey-content">
-                <h3>Getting Started</h3>
-                <p>Completed fundamental learning paths on HTB Academy and pwned my first easy machines.</p>
+              <div className="htb-journey">
+                <h3>Learning Path & Milestones</h3>
+                <div className="journey-timeline">
+                  <div className="journey-item completed">
+                    <div className="journey-marker"></div>
+                    <div className="journey-content">
+                      <h4>Foundation Building</h4>
+                      <p>Completed fundamental modules covering networking, web applications, and basic exploitation techniques.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="journey-item completed">
+                    <div className="journey-marker"></div>
+                    <div className="journey-content">
+                      <h4>Skill Development</h4>
+                      <p>Advanced through complex topics including Active Directory, privilege escalation, and post-exploitation.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="journey-item current">
+                    <div className="journey-marker"></div>
+                    <div className="journey-content">
+                      <h4>Certification Preparation</h4>
+                      <p>Currently completing final modules and preparing for the hands-on CPTS examination.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="journey-item">
+                    <div className="journey-marker"></div>
+                    <div className="journey-content">
+                      <h4>Professional Application</h4>
+                      <p>Goal: Apply certified skills in real-world pentesting scenarios and pursue OSCP certification.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            
-            <div className="journey-item completed">
-              <div className="journey-marker"></div>
-              <div className="journey-content">
-                <h3>Building Skills</h3>
-                <p>Tackled more difficult machines and explored specialized topics like Active Directory attacks.</p>
+          )}
+
+          {/* MACHINES SECTION */}
+          {activeSection === 'machines' && (
+            <div className="content-section machines-section">
+              <div className="section-header">
+                <h2 className="section-title">
+                  <FaServer className="section-icon" />
+                  Machine Challenges
+                </h2>
+                <p className="section-description">
+                  Hands-on penetration testing experience across {totalMachines} different machine challenges.
+                </p>
+                
+                <div className="machines-stats">
+                  <div className="machine-stat-item">
+                    <span className="machine-stat-number">{startingPointCount}</span>
+                    <span className="machine-stat-label">Starting Point</span>
+                  </div>
+                  <div className="machine-stat-item">
+                    <span className="machine-stat-number">{activeCount}</span>
+                    <span className="machine-stat-label">Active</span>
+                  </div>
+                  <div className="machine-stat-item">
+                    <span className="machine-stat-number">{retiredCount}</span>
+                    <span className="machine-stat-label">Retired</span>
+                  </div>
+                  <div className="machine-stat-item">
+                    <span className="machine-stat-number">{totalMachines}</span>
+                    <span className="machine-stat-label">Total</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Starting Point Machines */}
+              <div className="machine-category">
+                <h3 className="category-title">
+                  <FaTerminal className="category-icon" />
+                  Starting Point ({startingPointCount})
+                </h3>
+                <p className="category-description">Guided learning machines organized by tiers</p>
+                
+                <div className="machines-grid">
+                  {startingPointMachines.map((machine, index) => (
+                    <div key={index} className={`machine-card ${machine.difficulty.toLowerCase().replace(' ', '-')}`}>
+                      <div className="machine-header">
+                        <div className="machine-title">
+                          {getOSIcon(machine.os)}
+                          <span className="machine-name">{machine.name}</span>
+                        </div>
+                        <span className="machine-tier">Tier {machine.tier}</span>
+                      </div>
+                      <div className="machine-info">
+                        <span className={`difficulty-badge ${machine.difficulty.toLowerCase().replace(' ', '-')}`}>
+                          {machine.difficulty}
+                        </span>
+                        <span className="machine-date">{machine.date}</span>
+                      </div>
+                      <div className="machine-tags">
+                        {machine.tags.slice(0, 3).map((tag, tagIndex) => (
+                          <span key={tagIndex} className="machine-tag">{tag}</span>
+                        ))}
+                        {machine.tags.length > 3 && (
+                          <span className="machine-tag">+{machine.tags.length - 3} more</span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Active Machines */}
+              <div className="machine-category">
+                <h3 className="category-title">
+                  <FaFire className="category-icon" />
+                  Active Machines ({activeCount})
+                </h3>
+                <p className="category-description">Currently available machines</p>
+                
+                <div className="machines-grid">
+                  {activeMachines.map((machine, index) => (
+                    <div key={index} className={`machine-card ${machine.difficulty.toLowerCase()}`}>
+                      <div className="machine-header">
+                        <div className="machine-title">
+                          {getOSIcon(machine.os)}
+                          <span className="machine-name">{machine.name}</span>
+                        </div>
+                        {machine.points ? (
+                          <span className="machine-points">{machine.points} pts</span>
+                        ) : machine.tier !== undefined ? (
+                          <span className="machine-tier">Tier {machine.tier}</span>
+                        ) : null}
+                      </div>
+                      <div className="machine-info">
+                        <span className={`difficulty-badge ${machine.difficulty.toLowerCase()}`}>
+                          {machine.difficulty}
+                        </span>
+                        <span className="machine-date">{machine.date}</span>
+                      </div>
+                      <div className="machine-tags">
+                        {machine.tags.slice(0, 3).map((tag, tagIndex) => (
+                          <span key={tagIndex} className="machine-tag">{tag}</span>
+                        ))}
+                        {machine.tags.length > 3 && (
+                          <span className="machine-tag">+{machine.tags.length - 3} more</span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Retired Machines */}
+              <div className="machine-category">
+                <h3 className="category-title">
+                  <FaLock className="category-icon" />
+                  Retired Machines ({retiredCount})
+                </h3>
+                <p className="category-description">Classic machines from the archives</p>
+                
+                <div className="machines-grid">
+                  {retiredMachines.map((machine, index) => (
+                    <div key={index} className={`machine-card ${machine.difficulty.toLowerCase()}`}>
+                      <div className="machine-header">
+                        <div className="machine-title">
+                          {getOSIcon(machine.os)}
+                          <span className="machine-name">{machine.name}</span>
+                        </div>
+                        <span className="machine-points">{machine.points} pts</span>
+                      </div>
+                      <div className="machine-info">
+                        <span className={`difficulty-badge ${machine.difficulty.toLowerCase()}`}>
+                          {machine.difficulty}
+                        </span>
+                        <span className="machine-date">{machine.date}</span>
+                      </div>
+                      <div className="machine-tags">
+                        {machine.tags.map((tag, tagIndex) => (
+                          <span key={tagIndex} className="machine-tag">{tag}</span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-            
-            <div className="journey-item current">
-              <div className="journey-marker"></div>
-              <div className="journey-content">
-                <h3>CPTS Certification</h3>
-                <p>Currently working through the CPTS learning path and preparing for the exam.</p>
+          )}
+
+          {/* SKILLS SECTION */}
+          {activeSection === 'skills' && (
+            <div className="content-section skills-section">
+              <div className="section-header">
+                <h2 className="section-title">
+                  <FaShieldAlt className="section-icon" />
+                  Skills & Tools
+                </h2>
+                <p className="section-description">
+                  Technical skills and tools developed through hands-on penetration testing experience.
+                </p>
+              </div>
+
+              <div className="skills-grid">
+                <div className="skill-category">
+                  <h3>
+                    <FaTerminal className="skill-icon" />
+                    Reconnaissance
+                  </h3>
+                  <div className="skill-items">
+                    <span className="skill-item">Nmap</span>
+                    <span className="skill-item">Directory Enumeration</span>
+                    <span className="skill-item">Service Discovery</span>
+                    <span className="skill-item">OSINT</span>
+                  </div>
+                </div>
+
+                <div className="skill-category">
+                  <h3>
+                    <FaNetworkWired className="skill-icon" />
+                    Web Application Testing
+                  </h3>
+                  <div className="skill-items">
+                    <span className="skill-item">SQL Injection</span>
+                    <span className="skill-item">XSS</span>
+                    <span className="skill-item">File Upload Vulnerabilities</span>
+                    <span className="skill-item">Authentication Bypass</span>
+                  </div>
+                </div>
+
+                <div className="skill-category">
+                  <h3>
+                    <FaServer className="skill-icon" />
+                    System Exploitation
+                  </h3>
+                  <div className="skill-items">
+                    <span className="skill-item">Buffer Overflow</span>
+                    <span className="skill-item">Privilege Escalation</span>
+                    <span className="skill-item">Remote Code Execution</span>
+                    <span className="skill-item">CVE Research</span>
+                  </div>
+                </div>
+
+                <div className="skill-category">
+                  <h3>
+                    <FaLock className="skill-icon" />
+                    Post-Exploitation
+                  </h3>
+                  <div className="skill-items">
+                    <span className="skill-item">Lateral Movement</span>
+                    <span className="skill-item">Persistence</span>
+                    <span className="skill-item">Data Exfiltration</span>
+                    <span className="skill-item">Covering Tracks</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="tools-section">
+                <h3>Penetration Testing Tools</h3>
+                <div className="tools-grid">
+                  <div className="tool-item">
+                    <FaTerminal className="tool-icon" />
+                    <span>Nmap</span>
+                  </div>
+                  <div className="tool-item">
+                    <FaServer className="tool-icon" />
+                    <span>Metasploit</span>
+                  </div>
+                  <div className="tool-item">
+                    <FaNetworkWired className="tool-icon" />
+                    <span>Burp Suite</span>
+                  </div>
+                  <div className="tool-item">
+                    <FaShieldAlt className="tool-icon" />
+                    <span>SQLMap</span>
+                  </div>
+                  <div className="tool-item">
+                    <FaFire className="tool-icon" />
+                    <span>Gobuster</span>
+                  </div>
+                  <div className="tool-item">
+                    <FaLock className="tool-icon" />
+                    <span>John the Ripper</span>
+                  </div>
+                </div>
               </div>
             </div>
-            
-            <div className="journey-item">
-              <div className="journey-marker"></div>
-              <div className="journey-content">
-                <h3>Professional Pentesting</h3>
-                <p>Goal: Apply skills in real-world environments and continue with OSCP certification.</p>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </section>
     </div>

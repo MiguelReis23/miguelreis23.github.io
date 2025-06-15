@@ -1,0 +1,32 @@
+{
+  "Starting Point": [
+    { "name": "Meow", "difficulty": "Very Easy", "date": "June 2024", "tier": 0, "os": "Linux", "tags": ["Telnet", "Protocols", "Reconnaissance", "Weak Credentials", "Misconfiguration"] },
+    { "name": "Fawn", "difficulty": "Very Easy", "date": "June 2024", "tier": 0, "os": "Linux", "tags": ["FTP", "Protocols", "Reconnaissance", "Anonymous/Guest Access"]},
+    { "name": "Dancing", "difficulty": "Very Easy", "date": "June 2024", "tier": 0, "os": "Windows", "tags": ["Protocols", "SMB", "Reconnaissance", "Anonymous/Guest Access"]},
+    { "name": "Redeemer", "difficulty": "Very Easy", "date": "June 2024", "tier": 0, "os": "Linux", "tags": ["Redis", "Vulnerability Assessment", "Databases", "Reconnaissance", "Anonymous/Guest Access"]},
+    { "name": "Appointment", "difficulty": "Very Easy", "date": "June 2024", "tier": 1, "os": "Linux", "tags": ["Databases", "Apache", "MariaDB", "PHP", "SQL", "Reconnaissance", "SQL Injection"]},
+    { "name": "Sequel", "difficulty": "Very Easy", "date": "June 2024", "tier": 1, "os": "Linux", "tags": ["Vulnerability Assessment", "Databases", "MySQL", "SQL", "Reconnaissance", "Weak Credentials"] },
+    { "name": "Crocodile", "difficulty": "Very Easy", "date": "June 2024", "tier": 1, "os": "Linux", "tags": ["Custom Applications", "Protocols", "Apache", "FTP", "Reconnaissance", "Web Site Structure Discovery", "Clear Text Credentials", "Anonymous/Guest Access"]},
+    { "name": "Responder", "difficulty": "Very Easy", "date": "June 2024", "tier": 1, "os": "Windows", "tags": ["WinRM", "Custom Applications", "Protocols", "XAMPP", "SMB", "Responder", "PHP", "Reconnaissance", "Password Cracking", "Hash Capture", "Remote File Inclusion", "Remote Code Execution"]},
+    { "name": "Three", "difficulty": "Very Easy", "date": "July 2024", "tier": 1, "os": "Linux", "tags": ["Cloud", "Custom Applications", "AWS", "Reconnaissance", "Web Site Structure Discovery", "Bucket Enumeration", "Arbitrary File Upload", "Anonymous/Guest Access"]},
+    { "name": "Archetype", "difficulty": "Very Easy", "date": "July 2024", "tier": 2, "os": "Windows", "tags": ["Protocols", "MSSQL", "SMB", "Powershell", "Reconnaissance", "Remote Code Execution", "Clear Text Credentials", "Information Disclosure", "Anonymous/Guest Access"]},
+    { "name": "Oopsie", "difficulty": "Very Easy", "date": "July 2024", "tier": 2, "os": "Linux", "tags": ["PHP", "Custom Applications", "Apache", "Reconnaissance", "Web Site Structure Discovery", "Cookie Manipulation", "SUID Exploitation", "Authentication Bypass", "Clear Text Credentials", "Arbitrary File Upload", "Insecure Direct Object Reference (IDOR)", "Path Hijacking"]},
+    { "name": "Vaccine", "difficulty": "Very Easy", "date": "July 2024", "tier": 2, "os": "Linux", "tags": ["Vulnerability Assessment", "Databases", "Custom Applications", "Protocols", "Source Code Analysis", "Apache", "PostgreSQL", "FTP", "PHP", "Reconnaissance", "Password Cracking", "SUDO Exploitation", "SQL Injection", "Remote Code Execution", "Clear Text Credentials", "Anonymous/Guest Access"]},
+    { "name": "Unified", "difficulty": "Very Easy", "date": "July 2024", "tier": 2, "os": "Linux", "tags": ["Vulnerability Assessment", "Databases", "Custom Applications", "MongoDB", "Java", "Reconnaissance", "Clear Text Credentials", "Default Credentials", "Code Injection"]}
+  ],
+  "Retired": [
+    { "name": "PermX", "difficulty": "Easy", "points": 20, "date": "May 2022", "os": "Linux", "tags": ["SMB", "CVE"] },
+    { "name": "Legacy", "difficulty": "Easy", "points": 20, "date": "May 2022", "os": "Windows", "tags": ["SMB", "CVE"] },
+    { "name": "Devel", "difficulty": "Easy", "points": 20, "date": "June 2022", "os": "Windows", "tags": ["Web", "FTP"] },
+    { "name": "Bashed", "difficulty": "Easy", "points": 20, "date": "June 2022", "os": "Linux", "tags": ["Web", "SUDO"] },
+    { "name": "Blue", "difficulty": "Easy", "points": 20, "date": "July 2022", "os": "Windows", "tags": ["SMB", "EternalBlue"] },
+    { "name": "Optimum", "difficulty": "Easy", "points": 20, "date": "July 2022", "os": "Windows", "tags": ["Web", "CVE"] },
+    { "name": "Bastard", "difficulty": "Medium", "points": 30, "date": "August 2022", "os": "Windows", "tags": ["Web", "Drupal"] },
+    { "name": "Nineveh", "difficulty": "Medium", "points": 30, "date": "September 2022", "os": "Linux", "tags": ["Web", "LFI"] }
+  ],
+    "Active": [
+        { "name": "Silo", "difficulty": "Medium", "date": "July 2024", "tier": 1, "os": "Linux", "tags": ["Custom Applications", "Protocols", "Redis", "PHP", "Reconnaissance", "Web Site Structure Discovery", "Arbitrary File Upload"] },
+        { "name": "Horizon", "difficulty": "Medium", "date": "July 2024", "tier": 2, "os": "Linux", "tags": ["Custom Applications", "Protocols", "Apache", "PHP", "Reconnaissance", "Web Site Structure Discovery", "Arbitrary File Upload"] },
+        { "name": "Cobalt Strike", "difficulty": "Medium", "date": "", "tier": 2, "os": "", "tags": ["Cobalt Strike"] }
+    ]
+}
