@@ -39,7 +39,7 @@
       "id": 108,
       "title": "Vulnerability Assessment",
       "difficulty": "Easy",
-      "completed": 0,
+      "completed": 10,
       "total": 17
     },
     {
@@ -197,5 +197,5 @@
       "total": 14
     }
   ],
-  "lastUpdated": "2024-01-20"
+  "lastUpdated": "2025-07-09"
 }

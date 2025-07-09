@@ -22,7 +22,8 @@
     { "name": "UnderPass", "difficulty": "Easy", "date": "February 2025", "os": "Linux", "walkthrough": "UnderPass/UnderPass.md" }
   ],
   "Active": [
-    { "name": "Planning", "difficulty": "Medium", "date": "June 2025", "os": "Linux", "walkthrough": null },
-    { "name": "Dog", "difficulty": "Medium", "date": "June 2025", "os": "Linux", "walkthrough": null }
+    { "name": "Planning", "difficulty": "Easy", "date": "June 2025", "os": "Linux", "walkthrough": null },
+    { "name": "Dog", "difficulty": "Easy", "date": "June 2025", "os": "Linux", "walkthrough": null },
+    {"name": "Artificial", "difficulty": "Easy", "date": "June 2025", "os": "Linux", "walkthrough": null }
   ]
 }
