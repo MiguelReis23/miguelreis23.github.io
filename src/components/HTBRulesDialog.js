@@ -3,8 +3,15 @@ import './HTBRulesDialog.css';
 import { FaLock } from 'react-icons/fa';
 
 const HTBRulesDialog = ({ onClose }) => {
+  // Handle click outside modal
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
 return (
-    <div className="htb-rules-overlay">
+    <div className="htb-rules-overlay" onClick={handleOverlayClick}>
         <div className="htb-rules-container">
             <div className="htb-rules-icon"><FaLock/> </div>
             <h2>HackTheBox Community Rules</h2>

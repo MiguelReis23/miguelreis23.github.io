@@ -18,7 +18,6 @@ Downloading it we find unencrypted ftp traffic displaying login credentials
 
 ![[Cap-20240818193733785.png]]
 
-Buck3tH4TF0RM3!
 
 The /usr/bin/python3.8 is
 found to have cap_setuid and cap_net_bind_service , which isn't the default setting..

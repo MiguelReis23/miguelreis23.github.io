@@ -19,11 +19,11 @@
     { "name": "Lame", "difficulty": "Easy", "date": "July 2024", "os": "Linux", "walkthrough": "Lame/Lame.md" },
     { "name": "Headless", "difficulty": "Easy", "date": "July 2024", "os": "Linux", "walkthrough": "Headless/Headless.md" },
     { "name": "Cap", "difficulty": "Easy", "date": "August 2024", "os": "Linux", "walkthrough": "Cap/Cap.md" },
-    { "name": "UnderPass", "difficulty": "Easy", "date": "February 2025", "os": "Linux", "walkthrough": "UnderPass/UnderPass.md" }
+    { "name": "UnderPass", "difficulty": "Easy", "date": "February 2025", "os": "Linux", "walkthrough": "UnderPass/UnderPass.md" },
+    { "name": "Dog", "difficulty": "Easy", "date": "June 2025", "os": "Linux", "walkthrough": "Dog/Dog.md" }
   ],
   "Active": [
     { "name": "Planning", "difficulty": "Easy", "date": "June 2025", "os": "Linux", "walkthrough": null },
-    { "name": "Dog", "difficulty": "Easy", "date": "June 2025", "os": "Linux", "walkthrough": null },
     {"name": "Artificial", "difficulty": "Easy", "date": "June 2025", "os": "Linux", "walkthrough": null }
   ]
 }

@@ -32,7 +32,7 @@ function App() {
             <Route path="/about" element={<About />} />
             {/* <Route path="/skills" element={<UnderConstructionWrapper component={Skills} />} /> */}
             <Route path="/projects" element={<Projects />} />
-            <Route path="/htb" element={<HackTheBox />} />
+            <Route path="/cyber" element={<HackTheBox />} />
             <Route path="/contact" element={<Contact/>} />
           </Routes>
         </main>

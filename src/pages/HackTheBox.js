@@ -20,6 +20,12 @@ const HackTheBox = () => {
   // State for HTB rules dialog
   const [showHTBRulesDialog, setShowHTBRulesDialog] = useState(false);
   
+  // State for highlighted machine
+  const [highlightedMachine, setHighlightedMachine] = useState(null);
+  
+  // State for highlighted module
+  const [highlightedModule, setHighlightedModule] = useState(null);
+  
   // Handle toggle with animation
   const toggleModules = () => {
     if (isModulesExpanded) {
@@ -112,10 +118,17 @@ const HackTheBox = () => {
   
   const totalProgress = summary.overallProgress;
   
+  // Helper function to parse month/year dates for sorting
+  const parseDate = (dateString) => {
+    // Handle formats like "January 2025", "Jan 2025", "01/2025", etc.
+    const date = new Date(dateString + " 01"); // Add day 01 to make it parseable
+    return date.getTime(); // Return timestamp for comparison
+  };
+
   // Get machines from JSON data
   const startingPointMachines = htbMachinesData["Starting Point"];
-  const activeMachines = htbMachinesData["Active"];
-  const retiredMachines = htbMachinesData["Retired"];
+  const activeMachines = htbMachinesData["Active"].sort((a, b) => parseDate(b.date) - parseDate(a.date));
+  const retiredMachines = htbMachinesData["Retired"].sort((a, b) => parseDate(b.date) - parseDate(a.date));
   
   // Helper function to get OS icon
   const getOSIcon = (os) => {
@@ -140,7 +153,8 @@ const HackTheBox = () => {
   const getIconComponent = (iconName) => {
     const iconMap = {
       FaServer, FaTerminal, FaNetworkWired, FaLock, FaFire, FaShieldAlt,
-      FaTrophy, FaGraduationCap, FaChartLine, FaLinux, FaWindows, FaDesktop
+      FaTrophy, FaGraduationCap, FaChartLine, FaLinux, FaWindows, FaDesktop,
+      FaBookOpen, FaBook
     };
     return iconMap[iconName] || FaDesktop;
   };
@@ -150,6 +164,61 @@ const HackTheBox = () => {
     ...section,
     IconComponent: getIconComponent(section.icon)
   }));
+
+  // Handle machine click from recent activity
+  const handleMachineClick = (machineName) => {
+    // Find the machine in the data
+    const machine = allMachines.find(m => m.name === machineName);
+    if (!machine) return;
+    
+    // Set highlighted machine
+    setHighlightedMachine(machineName);
+    
+    // Clear highlight after 3 seconds
+    setTimeout(() => {
+      setHighlightedMachine(null);
+    }, 5000);
+    
+    // Scroll to the machine card
+    setTimeout(() => {
+      const machineElement = document.getElementById(`machine-${machineName.replace(/\s+/g, '-').toLowerCase()}`);
+      if (machineElement) {
+        machineElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 300);
+  };
+
+  // Handle module click from recent activity
+  const handleModuleClick = (moduleName) => {
+    // Find the module in the data
+    const module = cptsModules.find(m => m.name.toLowerCase().includes(moduleName.toLowerCase()));
+    if (!module) return;
+    
+    // Set highlighted module
+    setHighlightedModule(module.name);
+    
+    // Clear highlight after 3 seconds
+    setTimeout(() => {
+      setHighlightedModule(null);
+    }, 5000);
+    
+    // First expand the modules section if not already expanded
+    if (!isModulesExpanded) {
+      setIsModulesExpanded(true);
+      setAnimationState('expanding');
+      setTimeout(() => {
+        setAnimationState('');
+      }, 300);
+    }
+    
+    // Scroll to the module
+    setTimeout(() => {
+      const moduleElement = document.getElementById(`module-${module.name.replace(/\s+/g, '-').toLowerCase()}`);
+      if (moduleElement) {
+        moduleElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, isModulesExpanded ? 300 : 600);
+  };
 
   return (
     <div className="page-container">
@@ -243,12 +312,120 @@ const HackTheBox = () => {
                       const IconComponent = getIconComponent(activity.icon);
                       let description = activity.description;
                       
-                      // // Replace dynamic content based on activity type
-                      // if (activity.type === 'machines') {
-                      //   description = `Completed ${startingPointMachines.slice(-3).map(m => m.name).join(', ')} machines`;
-                      // } else if (activity.type === 'certification') {
-                      //   description = `Achieved ${summary.completedModules} completed CPTS modules`;
-                      // }
+                      // Replace dynamic content based on activity type
+                      if (activity.type === 'machines') {
+                        // Extract machine name from description (without quotes)
+                        const machineNameMatch = activity.description.match(/(?:Completed|Achieved)\s+(.+?)\s+machine/);
+                        if (machineNameMatch) {
+                          const machineName = machineNameMatch[1];
+                          
+                          // Find the machine in our data
+                          const allMachines = [...activeMachines, ...retiredMachines, ...startingPointMachines];
+                          const machine = allMachines.find(m => m.name === machineName);
+                          
+                          if (machine) {
+                            // Create clickable machine name
+                            const beforeMachine = activity.description.substring(0, machineNameMatch.index + machineNameMatch[0].indexOf(machineName));
+                            const afterMachine = activity.description.substring(machineNameMatch.index + machineNameMatch[0].indexOf(machineName) + machineName.length);
+                            
+                            return (
+                              <div key={index} className="recent-item">
+                                <IconComponent className="activity-icon" />
+                                <span>
+                                  {beforeMachine}
+                                  <button 
+                                    className="machine-name-link"
+                                    onClick={() => {
+                                      setActiveSection('machines');
+                                      setTimeout(() => {
+                                        handleMachineClick(machineName);
+                                      }, 100);
+                                    }}
+                                  >
+                                    {machineName}
+                                  </button>
+                                  {afterMachine}
+                                </span>
+                              </div>
+                            );
+                          }
+                        }
+                      } else if (activity.type === 'module') {
+                        // Extract module name from description (without quotes)
+                        const moduleNameMatch = activity.description.match(/(?:Finished|Completed)\s+(.+?)\s+module/);
+                        if (moduleNameMatch) {
+                          const moduleName = moduleNameMatch[1];
+                          
+                          // Find the module in our data
+                          const module = cptsModules.find(m => m.name.toLowerCase().includes(moduleName.toLowerCase()));
+                          
+                          if (module) {
+                            // Create clickable module name
+                            const beforeModule = activity.description.substring(0, moduleNameMatch.index + moduleNameMatch[0].indexOf(moduleName));
+                            const afterModule = activity.description.substring(moduleNameMatch.index + moduleNameMatch[0].indexOf(moduleName) + moduleName.length);
+                            
+                            return (
+                              <div key={index} className="recent-item">
+                                <IconComponent className="activity-icon" />
+                                <span>
+                                  {beforeModule}
+                                  <button 
+                                    className="machine-name-link"
+                                    onClick={() => {
+                                      setActiveSection('cpts');
+                                      setTimeout(() => {
+                                        handleModuleClick(moduleName);
+                                      }, 100);
+                                    }}
+                                  >
+                                    {moduleName}
+                                  </button>
+                                  {afterModule}
+                                </span>
+                              </div>
+                            );
+                          }
+                        }
+                      } else if (activity.type === 'walkthrough') {
+                        // Extract machine name from walkthrough description
+                        const walkthroughNameMatch = activity.description.match(/(?:Published|Created)\s+(.+?)\s+walkthrough/);
+                        if (walkthroughNameMatch) {
+                          const machineName = walkthroughNameMatch[1];
+                          
+                          // Find the machine in our data
+                          const allMachines = [...activeMachines, ...retiredMachines, ...startingPointMachines];
+                          const machine = allMachines.find(m => m.name === machineName);
+                          
+                          if (machine) {
+                            // Create clickable machine name
+                            const beforeMachine = activity.description.substring(0, walkthroughNameMatch.index + walkthroughNameMatch[0].indexOf(machineName));
+                            const afterMachine = activity.description.substring(walkthroughNameMatch.index + walkthroughNameMatch[0].indexOf(machineName) + machineName.length);
+                            
+                            return (
+                              <div key={index} className="recent-item">
+                                <IconComponent className="activity-icon" />
+                                <span>
+                                  {beforeMachine}
+                                  <button 
+                                    className="machine-name-link"
+                                    onClick={() => {
+                                      setActiveSection('machines');
+                                      setTimeout(() => {
+                                        handleMachineClick(machineName);
+                                      }, 100);
+                                    }}
+                                  >
+                                    {machineName}
+                                  </button>
+                                  {afterMachine}
+                                </span>
+                              </div>
+                            );
+                          }
+                        }
+                      } else if (activity.type === 'certification') {
+                        description = `Achieved ${summary.completedModules} completed CPTS modules`;
+                      }
                       
                       return (
                         <div key={index} className="recent-item">
@@ -336,7 +513,7 @@ const HackTheBox = () => {
                   <div className={`modules-content ${animationState}`}>              
                     <div className="module-list">
                       {cptsModules.map((module, index) => (
-                        <div key={index} className={`module-item ${module.status} ${module.difficulty.toLowerCase()}`}>
+                        <div key={index} className={`module-item ${module.status} ${module.difficulty.toLowerCase()}${highlightedModule === module.name ? ' highlighted' : ''}`} id={`module-${module.name.replace(/\s+/g, '-').toLowerCase()}`}>
                           <div className="module-info">
                             <div className="module-header">
                               <span className="module-name">{module.name}</span>
@@ -433,7 +610,7 @@ const HackTheBox = () => {
                   
                   <div className="machines-grid">
                     {activeMachines.map((machine, index) => (
-                      <div key={index} className={`machine-card ${machine.difficulty.toLowerCase()}`}>
+                      <div key={index} className={`machine-card ${machine.difficulty.toLowerCase()}${highlightedMachine === machine.name ? ' highlighted' : ''}`} id={`machine-${machine.name.replace(/\s+/g, '-').toLowerCase()}`}>
                         <div className="machine-header">
                           <div className="machine-title">
                             {getOSIcon(machine.os)}
@@ -479,7 +656,7 @@ const HackTheBox = () => {
                   
                   <div className="machines-grid">
                     {retiredMachines.map((machine, index) => (
-                      <div key={index} className={`machine-card ${machine.difficulty.toLowerCase()}`}>
+                      <div key={index} className={`machine-card ${machine.difficulty.toLowerCase()}${highlightedMachine === machine.name ? ' highlighted' : ''}`} id={`machine-${machine.name.replace(/\s+/g, '-').toLowerCase()}`}>
                         <div className="machine-header">
                           <div className="machine-title">
                             {getOSIcon(machine.os)}
@@ -528,7 +705,7 @@ const HackTheBox = () => {
                   
                   <div className="machines-grid">
                     {startingPointMachines.map((machine, index) => (
-                      <div key={index} className={`machine-card ${machine.difficulty.toLowerCase().replace(' ', '-')}`}>
+                      <div key={index} className={`machine-card ${machine.difficulty.toLowerCase().replace(' ', '-')}${highlightedMachine === machine.name ? ' highlighted' : ''}`} id={`machine-${machine.name.replace(/\s+/g, '-').toLowerCase()}`}>
                         <div className="machine-header">
                           <div className="machine-title">
                             {getOSIcon(machine.os)}

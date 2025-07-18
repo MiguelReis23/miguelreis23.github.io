@@ -53,7 +53,7 @@ const Header = () => {
               <Link to="/projects" onClick={() => setMobileMenuOpen(false)}> Projects</Link>
             </li>
             <li>
-              <Link to="/htb" onClick={() => setMobileMenuOpen(false)}> Cybersecurity </Link>
+              <Link to="/cyber" onClick={() => setMobileMenuOpen(false)}> Cybersecurity </Link>
             </li>
             <li>
               <Link to="/contact" onClick={() => setMobileMenuOpen(false)}> Contact</Link>

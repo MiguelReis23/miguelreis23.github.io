@@ -13,13 +13,18 @@
     "recentActivity": [
       {
         "icon": "FaServer",
-        "description": "Completed \"Artificial\" machine",
+        "description": "Completed Artificial machine",
         "type": "machines"
       },
       {
         "icon": "FaGraduationCap", 
-        "description": "Finished \"Vulnerabilty Assessment\" module in CPTS",
+        "description": "Finished Vulnerability Assessment module in CPTS",
         "type": "module"
+      },
+      {
+        "icon": "FaBookOpen",
+        "description": "Published Dog walkthrough",
+        "type": "walkthrough"
       }
     ],
     "nextGoals": [

@@ -1291,6 +1291,26 @@ tr.difficulty-hard td:nth-child(2) {
   flex-shrink: 0;
 }
 
+/* Machine Name Link in Recent Activity */
+.machine-name-link {
+  background: none;
+  border: none;
+  color: var(--accent-primary);
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  transition: color 0.2s ease;
+}
+
+.machine-name-link:hover {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
 /* Next Goals Card */
 .next-goals {
   display: flex;
@@ -1443,6 +1463,35 @@ tr.difficulty-hard td:nth-child(2) {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
+}
+
+/* Highlighted Machine Card Animation */
+.machine-card.highlighted {
+  animation: highlightPulse 2s ease-in-out;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+}
+
+@keyframes highlightPulse {
+  0% {
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(88, 166, 255, 0.5);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+    transform: scale(1);
+  }
+}
+
+/* Highlighted Module Item Animation */
+.module-item.highlighted {
+  animation: highlightPulse 2s ease-in-out;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
 }
 
 
