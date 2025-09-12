@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import { FaArrowLeft, FaBookOpen, FaSpinner } from 'react-icons/fa';
 import './Walkthrough.css';
+import '../styles/callouts.css';
 
 const Walkthrough = ({ walkthroughPath, onClose }) => {
   const [content, setContent] = useState('');
@@ -42,6 +44,33 @@ const Walkthrough = ({ walkthroughPath, onClose }) => {
             const encodedImagePath = encodeURIComponent(imagePath);
             // Images are in the same folder as the markdown file
             return `![](/data/docs/walkthroughs/${walkthroughFolder}/${encodedImagePath})`;
+          })
+          // Convert Obsidian callouts to HTML divs
+          .replace(/^>\s*\[!(\w+)\]\s*(.*?)$([\s\S]*?)(?=^(?:>\s*\[!|\n\n|$))/gm, (match, type, title, content) => {
+            const calloutType = type.toLowerCase();
+            const calloutTitle = title.trim() || type.charAt(0).toUpperCase() + type.slice(1);
+            
+            // Get icon for the callout type
+            const icons = {
+              note: '📝', tip: '💡', info: 'ℹ️', warning: '⚠️', danger: '⛔',
+              example: '📋', quote: '💬', success: '✅', error: '❌', bug: '🐛'
+            };
+            const icon = icons[calloutType] || '📝';
+            
+            // Clean up content - remove leading > from each line
+            const cleanContent = content.replace(/^>\s*/gm, '').trim();
+            
+            return `<div class="callout callout-${calloutType}">
+<div class="callout-title">
+<span class="callout-title-inner">${calloutTitle}</span>
+<span class="callout-icon">${icon}</span>
+</div>
+<div class="callout-content">
+
+${cleanContent}
+
+</div>
+</div>`;
           })
           // Add double line breaks for better spacing
           .replace(/\n\n/g, '\n\n\n')
@@ -111,7 +140,7 @@ const Walkthrough = ({ walkthroughPath, onClose }) => {
         <div className="walkthrough-content">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
-            rehypePlugins={[]}
+            rehypePlugins={[rehypeRaw]}
             skipHtml={false}
             components={{
               // Handle line breaks better

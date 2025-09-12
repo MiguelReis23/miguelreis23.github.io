@@ -7,9 +7,13 @@ const About = () => {
   
   const education = [
     {
+      degree: "Master in Cybersecurity", 
+      institution: "Aveiro's University", 
+      period: "2025 - Present"},
+    {
       degree: "Bachelor in Computer and Informatics Engineering",
       institution: "Aveiro's University",
-      period: "2021 - Present",
+      period: "2021 - 2025",
     },
     {
       degree: "High School Diploma in Science and Technology",
@@ -56,10 +60,10 @@ const About = () => {
           <div className="about-text">
             <h2>Who I Am</h2>
             <p>
-              I am a motivated Computer and Informatics Engineering student with a keen interest in technology and cybersecurity, eager to apply my classroom knowledge to real-world applications. I see myself as a collaborative person with a strong willingness to learn and contribute. I am prepared to offer fresh perspectives and a strong work ethic to any team.
+              I am a motivated Computer and Informatics Engineering graduate with a keen interest in technology and cybersecurity, currently pursuing a Master's degree in Cybersecurity. With my bachelor's degree completed, I am eager to apply my classroom knowledge and experience to real-world applications. I see myself as a collaborative person with a strong willingness to learn and contribute, always prepared to offer fresh perspectives and a strong work ethic to any team.
             </p>
             <p>
-              Currently pursuing my degree, I'm actively enhancing my skills through hands-on practice in environments like Hack The Box and working towards the Certified Penetration Testing Specialist (CPTS) certification.
+              As a master's student specializing in cybersecurity, I'm actively enhancing my skills through hands-on practice in environments like Hack The Box and working towards the Certified Penetration Testing Specialist (CPTS) certification.
             </p>
           </div>
           

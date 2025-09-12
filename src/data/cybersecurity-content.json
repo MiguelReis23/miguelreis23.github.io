@@ -13,7 +13,7 @@
     "recentActivity": [
       {
         "icon": "FaServer",
-        "description": "Completed Artificial machine",
+        "description": "Completed TwoMillion machine",
         "type": "machines"
       },
       {
@@ -23,7 +23,7 @@
       },
       {
         "icon": "FaBookOpen",
-        "description": "Published Dog walkthrough",
+        "description": "Published TwoMillion walkthrough",
         "type": "walkthrough"
       }
     ],
