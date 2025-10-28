@@ -12,18 +12,18 @@
     },
     "recentActivity": [
       {
-        "icon": "FaServer",
-        "description": "Completed TwoMillion machine",
-        "type": "machines"
-      },
-      {
         "icon": "FaGraduationCap", 
-        "description": "Finished File Transfers module in CPTS",
+        "description": "Finished Shells & Payloads module in CPTS",
         "type": "module"
       },
       {
         "icon": "FaBookOpen",
-        "description": "Published TwoMillion walkthrough",
+        "description": "Published Artificial walkthrough",
+        "type": "walkthrough"
+      },
+      {
+        "icon": "FaBookOpen",
+        "description": "Published Planning walkthrough",
         "type": "walkthrough"
       }
     ],

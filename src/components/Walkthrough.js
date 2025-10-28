@@ -34,6 +34,9 @@ const Walkthrough = ({ walkthroughPath, onClose }) => {
         
         // Convert Obsidian syntax to standard markdown
         let processedContent = text
+          // Convert single line breaks to proper markdown line breaks (two spaces + newline)
+          // This ensures metadata fields like Author, Date, OS appear on separate lines
+          .replace(/\n(?!\n)/g, '  \n')
           // Convert Obsidian image syntax ![[image.png]] to ![](image.png)
           .replace(/!\[\[(.*?)\]\]/g, (match, imagePath) => {
             // If it's already a full path, use as is

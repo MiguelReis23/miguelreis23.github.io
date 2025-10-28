@@ -53,14 +53,14 @@
       "id": 115,
       "title": "Shells & Payloads",
       "difficulty": "Medium",
-      "completed": 0,
+      "completed": 17,
       "total": 17
     },
     {
       "id": 39,
       "title": "Using the Metasploit Framework",
       "difficulty": "Easy",
-      "completed": 0,
+      "completed": 3,
       "total": 15
     },
     {
